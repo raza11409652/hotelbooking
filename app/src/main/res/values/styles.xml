@@ -1,0 +1,193 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:typeface">serif</item>
+
+    </style>
+
+
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/grey_black</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="noActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <!--    <style name="button_yellow" parent="Widget.MaterialComponents.Button.OutlinedButton">-->
+    <!--        <item name="shapeAppearance">@style/MyShapeAppearance</item>-->
+    <!--        <item name="backgroundTint">@color/yellow</item>-->
+    <!--        <item name="strokeColor">@color/yellow</item>-->
+    <!--        <item name="android:paddingBottom">@dimen/padding_18</item>-->
+    <!--        <item name="android:paddingTop">@dimen/padding_18</item>-->
+    <!--        <item name="android:paddingLeft">@dimen/padding_12</item>-->
+    <!--        <item name="android:paddingRight">@dimen/padding_12</item>-->
+    <!--        <item name="android:textColor">@color/text_color</item>-->
+
+    <!--    </style>-->
+
+    <style name="FlatButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+    </style>
+
+    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="outline_white" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/shimeerback</item>
+        <item name="elevation">0sp</item>
+        <item name="android:paddingBottom">@dimen/padding_18</item>
+        <item name="android:paddingTop">@dimen/padding_18</item>
+        <item name="android:paddingLeft">@dimen/padding_12</item>
+        <item name="android:paddingRight">@dimen/padding_12</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+    </style>
+
+    <style name="outline_primary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="rippleColor">@color/shimeerback</item>
+        <item name="elevation">0sp</item>
+        <item name="android:paddingBottom">@dimen/padding_18</item>
+        <item name="android:paddingTop">@dimen/padding_18</item>
+        <item name="android:paddingLeft">@dimen/padding_12</item>
+        <item name="android:paddingRight">@dimen/padding_12</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+
+    </style>
+
+    <style name="accent_btn" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/shimeerback</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="elevation">0sp</item>
+        <item name="android:paddingBottom">@dimen/padding_18</item>
+        <item name="android:paddingTop">@dimen/padding_18</item>
+        <item name="android:paddingLeft">@dimen/padding_12</item>
+        <item name="android:paddingRight">@dimen/padding_12</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+
+    </style>
+
+    <style name="alert_btn_small" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/color_alert_red</item>
+        <item name="android:textColor">@color/color_alert_red</item>
+        <item name="rippleColor">@color/color_alert_red_ripple</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="elevation">0sp</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+        <!--        <item name="android:paddingBottom">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingTop">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingLeft">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingRight">@dimen/padding_12</item>-->
+
+    </style>
+
+    <style name="accent_btn_small" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/shimeerback</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="elevation">0sp</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+        <!--        <item name="android:paddingBottom">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingTop">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingLeft">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingRight">@dimen/padding_12</item>-->
+
+    </style>
+
+
+    <style name="MyShapeAppearance">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSize">@dimen/size_4</item>
+
+    </style>
+
+    <style name="alert" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:colorPrimary">@color/colorAccent</item>
+        <item name="android:colorPrimaryDark">@color/colorAccent</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="android:typeface">serif</item>
+
+    </style>
+
+    <style name="bottom_nav" parent="Widget.Design.BottomNavigationView">
+        <item name="android:typeface">serif</item>
+        <item name="fontFamily">serif</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="customLoader" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="toolbarcustom" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorPrimaryInverse">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="blackIconToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/grey_black</item>
+        <item name="android:textColorPrimaryInverse">@color/grey_black</item>
+        <item name="android:textColor">@color/grey_black</item>
+
+    </style>
+
+    <style name="BottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@drawable/bottom_sheet_bg</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:orderInCategory="1"
+        android:title="@string/home"
+        android:visible="true"></item>
+    <item
+        android:id="@+id/bookings"
+        android:icon="@drawable/booking_icon"
+        android:orderInCategory="2"
+        android:title="@string/bookings"
+        android:visible="true"></item>
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/user_profile"
+        android:orderInCategory="3"
+        android:title="@string/profile"
+        android:visible="true"></item>
+</menu>

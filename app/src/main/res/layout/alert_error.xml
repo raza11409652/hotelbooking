@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/size_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_alert_red"
+            android:padding="@dimen/size_20">
+
+            <ImageView
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/alert_warning" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/parent_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/error_alert_text"
+                android:textAlignment="center"
+                android:textColor="@color/color_alert_heading"
+                android:textSize="@dimen/size_26"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/errorMsg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="An error has occured while creating an error report."
+                android:textAlignment="center"
+                android:textColor="@color/color_alert_text"
+                android:textSize="@dimen/size_16" />
+
+            <Button
+
+                android:id="@+id/ok"
+                style="@style/alert_btn_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginBottom="@dimen/margin_top"
+                android:text="@string/dialog_ok" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

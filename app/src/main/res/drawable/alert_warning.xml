@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="51.123dp"
+    android:height="51.123dp"
+    android:viewportWidth="51.123"
+    android:viewportHeight="51.123">
+
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M45.123,0H6C2.691,0,0,2.691,0,6v39.123c0,3.309,2.691,6,6,6h39.123c3.309,0,6-2.691,6-6V6C51.123,2.691,48.432,0,45.123,0z M49.123,45.123c0,2.206-1.794,4-4,4H6c-2.206,0-4-1.794-4-4V6c0-2.206,1.794-4,4-4h39.123c2.206,0,4,1.794,4,4V45.123z M26.562,10.999v23.772c0,0.552-0.447,1-1,1s-1-0.448-1-1V10.999c0-0.552,0.447-1,1-1S26.562,10.447,26.562,10.999z M26.562,39.249 v0.875c0,0.552-0.447,1-1,1s-1-0.448-1-1v-0.875c0-0.552,0.447-1,1-1S26.562,38.697,26.562,39.249z" />
+</vector>

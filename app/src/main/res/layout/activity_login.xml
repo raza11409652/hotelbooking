@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.Login">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:scaleType="centerInside"
+        android:src="@drawable/fod_logo_transaprent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/image"
+        android:orientation="vertical"
+        android:padding="@dimen/parent_padding">
+
+        <TextView
+            android:id="@+id/hiuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Hiuser"
+            android:textColor="@color/grey_black"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/tellus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btn_radius"
+            android:layout_marginBottom="@dimen/margin_view_top"
+            android:text="@string/tell_us" />
+
+        <EditText
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_view_top"
+            android:background="@drawable/input_back"
+            android:drawableStart="@drawable/flag_india"
+            android:drawablePadding="@dimen/size_4"
+            android:hint="@string/hint_mobile"
+            android:inputType="phone" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login"
+        style="@style/accent_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/parent_padding"
+        android:layout_marginTop="@dimen/margin_view_top"
+        android:text="@string/login"
+        android:textColor="@color/white" />
+</RelativeLayout>

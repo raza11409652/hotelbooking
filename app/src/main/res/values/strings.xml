@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Flatsondemand</string>
+    <string name="hint_mobile">9876543210</string>
+    <string name="login">Login</string>
+    <string name="Hiuser">Hi User !</string>
+    <string name="tell_us">Please enter your mobile number to get started</string>
+    <string name="moblie_required_error">Please enter valid mobile number</string>
+    <string name="dialog_ok">OK</string>
+    <string name="succeess">Success!!!</string>
+    <string name="error_alert_text">Alert !!!</string>
+    <string name="verify">Verify</string>
+    <string name="otp_screen_hint_text">"Please enter OTP sent to "</string>
+    <string name="otp_required_error">OTP is required</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="bookings">Bookings</string>
+    <string name="profile">Profile</string>
+    <string name="more">More</string>
+    <string name="no_active_booking_found">No active bookings found</string>
+    <string name="payment">Payments</string>
+    <string name="no_transaction_found">No transaction found</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="details">Details</string>
+    <string name="amount_to_be_paid">Amount Due</string>
+</resources>
