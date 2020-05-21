@@ -24,4 +24,9 @@
     <string name="pay_now">Pay Now</string>
     <string name="details">Details</string>
     <string name="amount_to_be_paid">Amount Due</string>
+    <string name="razor_pay">Razorpay</string>
+    <string name="razor_pay_support">Debit card , Credit card , Netbanking , UPI</string>
+    <string name="wiat_payment">Please wait while your payment is being processed</string>
+    <string name="razor_pay_service_charge">Service charge from razorpay (2%)</string>
+    <string name="gst_charge">Gst charge (18% on service charge)</string>
 </resources>

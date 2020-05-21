@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="@dimen/size_32"
-        android:layout_height="@dimen/size_32"></ImageView>
+        android:layout_width="@dimen/size_48"
+        android:layout_height="@dimen/size_48"></ImageView>
 
     <TextView
         android:id="@+id/upiName"
@@ -21,6 +21,7 @@
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/size_4"
         android:layout_toRightOf="@id/image"
-        android:text="UPI"></TextView>
+        android:text="UPI"
+        android:textColor="@color/text_color"></TextView>
 
 </RelativeLayout>

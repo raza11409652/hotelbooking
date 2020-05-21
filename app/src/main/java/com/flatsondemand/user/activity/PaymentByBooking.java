@@ -5,6 +5,7 @@
 package com.flatsondemand.user.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -42,7 +45,11 @@ import com.flatsondemand.user.listener.PaymentClickListener;
 import com.flatsondemand.user.listener.UpiListener;
 import com.flatsondemand.user.model.Payments;
 import com.flatsondemand.user.utils.Server;
+import com.flatsondemand.user.utils.ShowAlert;
+import com.flatsondemand.user.utils.ShowProgress;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +60,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PaymentByBooking extends AppCompatActivity implements PaymentClickListener, UpiListener {
+
+public class PaymentByBooking extends AppCompatActivity implements PaymentClickListener, UpiListener, PaymentResultListener {
+
+    /**
+     * Razor pay Payment
+     */
+    String RZP_KEY_ID = "rzp_test_WUdRvYwRyXmnJs";
+    String RZP_KEY_TOKEN = "9QaTJ2nHITqGfYm4ADTH3jpP";
+    Checkout checkout;
+
     Bundle data;
     String TAG = PaymentByBooking.class.getSimpleName();
     Toolbar toolbar;
@@ -63,13 +79,24 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
     ArrayList<Payments> payments;
     RecyclerView paymentsHolder;
     ConstraintLayout parent;
-    BottomSheetDialog sheetDialog;
+    BottomSheetDialog sheetDialog, razorPayBottomSheet;
     RecyclerView upiAppListHolder;
+
+    ShowProgress progress;
+    ShowAlert alert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_payment_by_booking);
+        /**
+         * Razor pay Init
+         */
+        checkout = new Checkout();
+        checkout.setKeyID(RZP_KEY_ID);
+        Checkout.preload(getApplicationContext());
+
         data = getIntent().getExtras();
         booking = data.getString("bookingId");
         bookingNumber = data.getString("bookingNumber");
@@ -82,7 +109,8 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
         paymentsHolder = findViewById(R.id.payments);
         paymentsHolder.setHasFixedSize(true);
         parent = findViewById(R.id.parent);
-
+        progress = new ShowProgress(this);
+        alert = new ShowAlert(this, this);
 //        setTitle(bookingNumber);
         loader = findViewById(R.id.loader);
         loader.startShimmerAnimation();
@@ -221,13 +249,42 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
     }
 
     @Override
-    public void onPaymentReceive(String amount, String bookingId) {
+    public void onPaymentReceive(final String amount, final String paymentId) {
         //        Log.d(TAG, "onPaymentReceive: " + bookingId + amount);
+        /**
+         * RAZOR PAY AMOUNT CONVERSION
+         */
+        openPaymentSelector(amount, paymentId);
+
+
+    }
+
+    private void openPaymentSelector(final String amount, final String paymentId) {
+        Double razorPayAmountInDouble = Double.parseDouble(amount);
+        razorPayAmountInDouble = razorPayAmountInDouble * 100;
+        final String razorPayAmount = String.valueOf(razorPayAmountInDouble.intValue());
         sheetDialog = new BottomSheetDialog(this, R.style.customLoader);
         View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_payment_options, null);
+
         sheetDialog.setContentView(view);
         upiAppListHolder = view.findViewById(R.id.upi_payments_list);
-        sheetDialog.setTitle("Hello");
+//        sheetDialog.setTitle("Hello");
+        RelativeLayout razorayLayout = view.findViewById(R.id.razor_pay_layout);
+        razorayLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: Init Razor pay");
+//                razorpayInit(razorPayAmount, paymentId);
+
+                openRazorPayBottomSheet(amount, paymentId);
+                sheetDialog.dismiss();
+
+                /**
+                 * Need to save current Payment Id for updating our server DUE
+                 */
+
+            }
+        });
         /**
          * UPI INTENT BUILDER
          */
@@ -244,7 +301,6 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
         payUri.appendQueryParameter("tn", "Order Ref 74657475858");
         payUri.appendQueryParameter("am", amount);
         payUri.appendQueryParameter("cu", "INR");
-
         Uri uri = payUri.build();
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(uri);
@@ -258,6 +314,92 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
 
         }
         sheetDialog.show();
+    }
+
+    private void openRazorPayBottomSheet(final String amount, final String paymentId) {
+        razorPayBottomSheet = new BottomSheetDialog(this, R.style.customLoader);
+        View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_razor_pay, null, false);
+        ImageButton change = view.findViewById(R.id.change_payment_method);
+        Button razorpayInitBtn = view.findViewById(R.id.payment_razor_pay);
+        razorpayInitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                razorpayInit(amount, paymentId);
+            }
+        });
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                razorPayBottomSheet.dismiss();
+                openPaymentSelector(amount, paymentId);
+            }
+        });
+        razorPayBottomSheet.setContentView(view);
+        razorPayBottomSheet.show();
+
+    }
+
+    private void razorpayInit(final String amount, final String paymentId) {
+        progress.show(getString(R.string.wiat_payment));
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.ORDER_GEN_RAZOR_PAY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "onResponse: " + response);
+                if (progress.isShowing()) progress.dismiss();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean error = jsonObject.getBoolean("error");
+                    if (error) {
+                        alert.alert("Razorpay payment is not supported at this time please use other one");
+                        return;
+                    } else {
+                        String RAZOR_PAY_TOKEN = jsonObject.getString("RAZORPAY_ORDER_TOKEN");
+                        Log.d(TAG, "onResponse: " + RAZOR_PAY_TOKEN);
+                        payWithRazorPay(amount, paymentId, RAZOR_PAY_TOKEN);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: " + error);
+                if (progress.isShowing()) progress.dismiss();
+                progress.dismiss();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("orderId", "FOD_PAY_" + paymentId);
+                map.put("amount", amount);
+                return map;
+            }
+        };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void payWithRazorPay(String amount, String paymentId, String razor_pay_token) {
+        final Activity activity = this;
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("name", "Flatsondemand");
+            jsonObject.put("description", "FOD_PAY_" + paymentId);
+            jsonObject.put("order_id", razor_pay_token);
+            jsonObject.put("currency", "INR");
+            jsonObject.put("amount", amount);
+            jsonObject.put("prefill.name", "Khalid");
+            jsonObject.put("prefill.contact", "+919835555982");
+            checkout.open(activity, jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -336,7 +478,7 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
 //                String approvalno = "UPI : " + approvalRefNo;
 //                String mode = "UPI APP " + getString(R.string.upi_vendor_vpa);
 //                createTransaction(orderid, orderuid, approvalno, mode);
-            Toast.makeText(getApplicationContext() , ""+approvalRefNo , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "" + approvalRefNo, Toast.LENGTH_SHORT).show();
 
         } else if ("Payment cancelled by user.".equals(paymentCancel)) {
             Toast.makeText(getApplicationContext(), "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
@@ -346,6 +488,23 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
             Toast.makeText(getApplicationContext(), "Payment cancel", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public void onPaymentSuccess(String s) {
+        Log.d(TAG, "onPaymentSuccess: " + s);
+
+        /**
+         * s is response ::  pay_EsnpiekBxYZ53X from Razorpay Server
+         */
+
+
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        Log.d(TAG, "onPaymentError: " + s);
+        alert.alert("" + s);
     }
 
     //    @Override

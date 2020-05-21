@@ -5,5 +5,5 @@
 package com.flatsondemand.user.listener;
 
 public interface PaymentClickListener {
-    void onPaymentReceive(String amount, String bookingId);
+    void onPaymentReceive(String amount, String paymentId);
 }
