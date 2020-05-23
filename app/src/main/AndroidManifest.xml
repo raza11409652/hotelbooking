@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/noActionBar">
+        <activity android:name=".TestAnim"></activity>
         <activity
-
             android:name=".activity.PaymentByBooking"
-            android:parentActivityName=".activity.Home"></activity>
+            android:parentActivityName=".activity.Home" />
         <activity
             android:name=".activity.Home"
             android:theme="@style/noActionBar" />

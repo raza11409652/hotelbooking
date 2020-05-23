@@ -88,27 +88,6 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/click_text"
-            android:orientation="vertical"
-            android:padding="@dimen/parent_padding">
 
-            <ImageView
-                android:id="@+id/image_1"
-                android:layout_width="@dimen/size_32"
-                android:layout_height="@dimen/size_32"></ImageView>
-
-            <TextView
-                android:id="@+id/upiName_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_margin="@dimen/size_4"
-                android:layout_toRightOf="@id/image_1"
-                android:text="RAZOR PAY"></TextView>
-
-        </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

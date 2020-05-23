@@ -44,6 +44,7 @@ import com.flatsondemand.user.adapter.UpiAdapter;
 import com.flatsondemand.user.listener.PaymentClickListener;
 import com.flatsondemand.user.listener.UpiListener;
 import com.flatsondemand.user.model.Payments;
+import com.flatsondemand.user.utils.Constant;
 import com.flatsondemand.user.utils.Server;
 import com.flatsondemand.user.utils.ShowAlert;
 import com.flatsondemand.user.utils.ShowProgress;
@@ -84,6 +85,7 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
 
     ShowProgress progress;
     ShowAlert alert;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,8 +256,17 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
         /**
          * RAZOR PAY AMOUNT CONVERSION
          */
+        Constant.CURRENT_PAYMENT_ID = paymentId;
         openPaymentSelector(amount, paymentId);
 
+
+    }
+
+    @Override
+    public void onDetailsClick(String paymentId) {
+
+        Log.d(TAG, "onDetailsClick: " + paymentId);
+//        progress.show(getString(R.string.please_wait_payment_details));
 
     }
 
@@ -340,6 +351,7 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
     }
 
     private void razorpayInit(final String amount, final String paymentId) {
+
         progress.show(getString(R.string.wiat_payment));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.ORDER_GEN_RAZOR_PAY, new Response.Listener<String>() {
             @Override
@@ -491,12 +503,56 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
     }
 
     @Override
-    public void onPaymentSuccess(String s) {
+    public void onPaymentSuccess(final String s) {
         Log.d(TAG, "onPaymentSuccess: " + s);
 
         /**
          * s is response ::  pay_EsnpiekBxYZ53X from Razorpay Server
          */
+
+
+        /**
+         * Requeired param for making API call is
+         *
+         */
+
+        try {
+            razorPayBottomSheet.dismiss();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        progress.show(getString(R.string.wiat_payment));
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.RAZOR_PAY_PAYMENT_UPDATE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                fetchPayments();
+                progress.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("razor_pay_payment_id", s);
+                map.put("payment", Constant.CURRENT_PAYMENT_ID);
+                return map;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("auth-token", "TOKEN");
+                map.put("client-token", "nLUlFKXtMcaryhnqBKSg2iJ7AeA3");
+                return map;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
 
     }
@@ -507,12 +563,4 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
         alert.alert("" + s);
     }
 
-    //    @Override
-//    public void onBackPressed() {
-//        if (getFragmentManager().getBackStackEntryCount() == 0) {
-//            this.finish();
-//        } else {
-//            getFragmentManager().popBackStack();
-//        }
-//    }
 }

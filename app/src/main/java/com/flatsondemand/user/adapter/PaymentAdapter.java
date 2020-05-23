@@ -63,6 +63,12 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Viewhold
                 listener.onPaymentReceive(list.get(position).getAmount(), list.get(position).getId());
             }
         });
+        holder.details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onDetailsClick(list.get(position).getId());
+            }
+        });
 
     }
 
@@ -79,6 +85,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Viewhold
 
 
             super(itemView);
+            details = itemView.findViewById(R.id.details_btn);
             paymentId = itemView.findViewById(R.id.payment_id);
             propertyName = itemView.findViewById(R.id.property_name);
             status = itemView.findViewById(R.id.status);
