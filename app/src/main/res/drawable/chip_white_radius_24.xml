@@ -12,7 +12,7 @@
     <corners android:radius="@dimen/size_24"></corners>
     <padding
         android:bottom="@dimen/size_8"
-        android:left="@dimen/padding_18"
-        android:right="@dimen/padding_18"
+        android:left="@dimen/size_24"
+        android:right="@dimen/size_24"
         android:top="@dimen/size_8"></padding>
 </shape>
