@@ -30,4 +30,14 @@
     <string name="razor_pay_service_charge">Service charge from razorpay (2%)</string>
     <string name="gst_charge">Gst charge (18% on service charge)</string>
     <string name="please_wait_payment_details">Please wait while system is fetching payment details</string>
+    <string name="my_fod">My FOD</string>
+    <string name="house_keeping">Housekeeping</string>
+    <string name="complaints">Complaints</string>
+    <string name="out_standing">Outstanding amount till now:</string>
+    <string name="amount">Rs.10000</string>
+    <string name="contact_fod_help">Contact Emergency FOD Helpline</string>
+    <string name="payment_for">Payment</string>
+    <string name="house_keeping_schedule">House keeping Schedule</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time</string>
 </resources>

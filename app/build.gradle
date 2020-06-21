@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
     //MDC
     implementation 'com.google.android.material:material:1.2.0-alpha04'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     //PAY U
     //Jetpack Navigation
     def nav_version = "2.2.0"

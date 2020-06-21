@@ -36,6 +36,18 @@
         <item name="android:typeface">serif</item>
     </style>
 
+    <style name="noActionBarWithTransparent" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+
     <!--    <style name="button_yellow" parent="Widget.MaterialComponents.Button.OutlinedButton">-->
     <!--        <item name="shapeAppearance">@style/MyShapeAppearance</item>-->
     <!--        <item name="backgroundTint">@color/yellow</item>-->
@@ -132,6 +144,21 @@
 
     </style>
 
+    <style name="white_btn_small" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="rippleColor">@color/shimeerback</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="elevation">0sp</item>
+        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
+        <!--        <item name="android:paddingBottom">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingTop">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingLeft">@dimen/padding_12</item>-->
+        <!--        <item name="android:paddingRight">@dimen/padding_12</item>-->
+
+    </style>
+
 
     <style name="MyShapeAppearance">
         <item name="cornerFamilyTopLeft">rounded</item>
@@ -180,14 +207,20 @@
     </style>
 
     <style name="BottomSheet" parent="Widget.Design.BottomSheet.Modal">
+
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:background">@drawable/bottom_sheet_bg</item>
     </style>
 
     <style name="BaseBottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog">
+
         <item name="android:windowIsFloating">false</item>
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
 
-    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" >
+<!--        <item name="android:colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="android:colorPrimaryDark">@color/colorPrimary</item>-->
+<!--        <item name="android:colorAccent">@color/colorAccent</item>-->
+    </style>
 </resources>

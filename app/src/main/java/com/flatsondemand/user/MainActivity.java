@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.flatsondemand.user.activity.Home;
 import com.flatsondemand.user.activity.Login;
 import com.flatsondemand.user.utils.TypefaceUtil;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         setContentView(R.layout.activity_main);
-        Intent login = new Intent(getApplicationContext(), Login.class);
+        Intent login = new Intent(getApplicationContext(), Home.class);
         startActivity(login);
         finish();
     }

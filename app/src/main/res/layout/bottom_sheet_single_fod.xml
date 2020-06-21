@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/botoomSheetSingleFod"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_bg"
+    android:maxHeight="@dimen/size_520"
+    android:padding="@dimen/parent_padding"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="@dimen/size_200"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:id="@+id/row_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_32"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/house_keeping"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/size_12"
+            android:layout_weight="1.8"
+            android:background="@drawable/chip_background_accent"
+            android:padding="@dimen/parent_padding">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_64"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/maid_icon"></ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:text="@string/house_keeping"
+                android:textAlignment="center"
+                android:textColor="@color/white"></TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:background="@drawable/chip_background_accent"
+            android:padding="@dimen/parent_padding">
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="@dimen/size_64"
+                android:layout_height="@dimen/size_64"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/close"></ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image1"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:text="@string/complaints"
+                android:textAlignment="center"
+                android:textColor="@color/white"></TextView>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/row_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_32"
+        app:cardCornerRadius="@dimen/size_24"
+        app:layout_constraintTop_toBottomOf="@id/row_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_payment_pending"
+            android:orientation="vertical"
+            android:padding="@dimen/parent_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <ImageView
+                    android:layout_width="0sp"
+                    android:layout_height="@dimen/size_52"
+                    android:layout_weight="1"
+                    android:src="@drawable/close"></ImageView>
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/out_standing"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_24"></TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_24"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                style="@style/white_btn_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:text="@string/pay_now"></Button>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/contact_helpline"
+        android:padding="@dimen/size_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/contact_fod_back"
+        android:text="@string/contact_fod_help"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

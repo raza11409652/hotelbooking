@@ -4,9 +4,13 @@
 
 package com.flatsondemand.user.model;
 
-public class Booking {
+import java.io.Serializable;
+@SuppressWarnings("serial")
+public class Booking implements Serializable {
+
     String id, number, bookingDate, startDate, endDate, status, amount, roomId, roomNumber,
-            propertyId, propertyName;
+            propertyId, propertyName , propertyCoverImage;
+
 
     public Booking(String id, String number, String bookingDate, String startDate, String endDate, String status, String amount, String roomId, String roomNumber, String propertyId, String propertyName) {
         this.id = id;
@@ -20,6 +24,29 @@ public class Booking {
         this.roomNumber = roomNumber;
         this.propertyId = propertyId;
         this.propertyName = propertyName;
+    }
+
+    public Booking(String id, String number, String bookingDate, String startDate, String endDate, String status, String amount, String roomId, String roomNumber, String propertyId, String propertyName, String propertyCoverImage) {
+        this.id = id;
+        this.number = number;
+        this.bookingDate = bookingDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+        this.amount = amount;
+        this.roomId = roomId;
+        this.roomNumber = roomNumber;
+        this.propertyId = propertyId;
+        this.propertyName = propertyName;
+        this.propertyCoverImage = propertyCoverImage;
+    }
+
+    public String getPropertyCoverImage() {
+        return propertyCoverImage;
+    }
+
+    public void setPropertyCoverImage(String propertyCoverImage) {
+        this.propertyCoverImage = propertyCoverImage;
     }
 
     public String getId() {

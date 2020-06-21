@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/single_property_fod"
+    tools:context=".activity.SingleFod">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/parent_padding">
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="@dimen/size_52"
+            android:layout_height="@dimen/size_52"
+            android:layout_marginTop="@dimen/size_32"
+            android:background="@drawable/click_btn_circle"
+            android:src="@drawable/close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageButton>
+
+        <TextView
+            android:id="@+id/property_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="property Name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_24"
+            app:layout_constraintTop_toBottomOf="@id/close"></TextView>
+
+        <TextView
+            android:id="@+id/room_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Room number"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20"
+            app:layout_constraintTop_toBottomOf="@id/property_name"></TextView>
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chip_white"
+            android:text="status"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/room_number"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Move in date"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status"></TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/bottom_sheet_single_fod" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

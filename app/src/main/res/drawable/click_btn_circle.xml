@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/shimeerback">
+    <item>
+        <shape android:shape="oval">
+            <size
+                android:width="@dimen/size_52"
+                android:height="@dimen/size_52"></size>
+            <gradient
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
+            <corners android:radius="@dimen/size_0"></corners>
+
+        </shape>
+    </item>
+</ripple>

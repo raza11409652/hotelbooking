@@ -31,4 +31,10 @@
     <color name="yellow_ripple">#FAEB90</color>
     <color name="text_color">#070600</color>
     <color name="success_green_ripple">#A4FFCE</color>
+    <color name="background_start_color">#FAD961</color>
+    <color name="background_end_color">#F76B1C</color>
+    <color name="payment_card_end_color">#F5515F</color>
+    <color name="payment_card_start_color">#9F041B</color>
+    <color name="help_start_color">#3023AE</color>
+    <color name="help_end_color">#C86DD7</color>
 </resources>

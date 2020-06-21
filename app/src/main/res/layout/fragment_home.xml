@@ -2,16 +2,23 @@
   ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HOME " />
+        android:src="@drawable/fod_logo_transaprent"
+        android:tint="@color/colorAccent"
+        app:backgroundTint="@color/colorAccent"
+        android:layout_margin="@dimen/size_12"
+        android:id="@+id/home_booking_shortcut"
+        android:layout_gravity="end|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-</FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
