@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flatsondemand.user.R;
 import com.flatsondemand.user.activity.SingleFod;
 import com.flatsondemand.user.adapter.MyFodAdapter;
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
     MyFodAdapter adapter;
     ArrayList<Booking> list;
     BottomSheetDialog sheetDialog;
+    ShimmerFrameLayout loader;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -76,6 +78,8 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
         sheetDialog = new BottomSheetDialog(getContext(), R.style.BottomSheetDialogTheme);
         View view = LayoutInflater.from(getContext()).inflate(R.layout.booking_shortcut_bottom_sheet, null);
         sheetDialog.setContentView(view);
+        loader = view.findViewById(R.id.loader_layout);
+        loader.startShimmerAnimation();
         RecyclerView listHolder = view.findViewById(R.id.list_my_fod);
         fetchActiveBooking(listHolder);
         sheetDialog.show();
@@ -89,7 +93,7 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
             public void onResponse(String response) {
 //                Log.d(TAG, "onResponse: " + response);
 //                loader.stopShimmerAnimation();
-//                loader.setVisibility(View.GONE);
+                loader.setVisibility(View.GONE);
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -160,6 +164,7 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
     private void setAdapter(ArrayList<Booking> list, RecyclerView bookingLists) {
         adapter = new MyFodAdapter(list, getContext(), this);
         bookingLists.setAdapter(adapter);
+        bookingLists.setVisibility(View.VISIBLE);
         bookingLists.setLayoutManager(new LinearLayoutManager(getContext()));
 
     }

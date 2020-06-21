@@ -39,5 +39,13 @@
     <string name="payment_for">Payment</string>
     <string name="house_keeping_schedule">House keeping Schedule</string>
     <string name="select_date">Select Date</string>
-    <string name="select_time">Select Time</string>
+    <string name="select_time">Select Time slot</string>
+    <string name="error_date_not_selected">"Please select date "</string>
+    <string name="error_time_slot_free">is not free</string>
+    <string name="bill">Bill</string>
+    <string name="total">Total</string>
+    <string name="rs_100">Rs.100</string>
+    <string name="charges_internet">Internet handling charge</string>
+    <string name="error_time_not_selected">Please select time slot</string>
+    <string name="RZR_PAY_TOKEN">rzp_test_WUdRvYwRyXmnJs</string>
 </resources>

@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Hackdroid DroidTech  Copyright (c) 2020.
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/margin_view_top"
-    app:behavior_hideable="false"
-    app:behavior_peekHeight="70dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/parent_padding"
-        android:text="@string/my_fod"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/size_24"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/select_time"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_my_fod"
         android:layout_width="match_parent"
+        android:id="@+id/list_item"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/header"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.facebook.shimmer.ShimmerFrameLayout
+        app:duration="1000"
         android:id="@+id/loader_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:duration="1000"
         app:layout_constraintTop_toBottomOf="@id/header">
 
         <LinearLayout
@@ -46,11 +42,8 @@
             <include layout="@layout/loader" />
 
             <include layout="@layout/loader" />
-
-            <include layout="@layout/loader" />
-            
-
         </LinearLayout>
+
     </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

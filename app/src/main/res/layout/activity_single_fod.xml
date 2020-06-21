@@ -48,13 +48,14 @@
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chip_white"
+            android:background="@drawable/chip_white_radius_24"
             android:text="status"
             android:textColor="@color/colorAccent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/room_number"></TextView>
 
         <TextView
+            android:id="@+id/moveInDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Move in date"

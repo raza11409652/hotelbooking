@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,12 +23,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class SingleFod extends AppCompatActivity {
     Booking booking;
+    Button pendingPayment;
     String TAG = SingleFod.class.getSimpleName();
     CoordinatorLayout parent;
     ImageButton close;
     BottomSheetBehavior sheetBehavior;
     ConstraintLayout bottomSheetLayout;
-    TextView contactHelpline;
+    TextView contactHelpline, propertyName, roomNumber, status, moveInDate;
     RelativeLayout houseKeeping;
 
 //    public SingleFod(Booking booking) {
@@ -44,7 +46,21 @@ public class SingleFod extends AppCompatActivity {
         /**
          * INit views
          */
+        propertyName = findViewById(R.id.property_name);
+        roomNumber = findViewById(R.id.room_number);
+        status = findViewById(R.id.status);
+        moveInDate = findViewById(R.id.moveInDate);
 
+        try {
+            propertyName.setText(booking.getPropertyName());
+            roomNumber.setText(booking.getRoomNumber());
+            status.setText(booking.getStatus());
+            moveInDate.setText("Moved in " + booking.getStartDate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        pendingPayment = findViewById(R.id.pendingPayments);
         bottomSheetLayout = findViewById(R.id.botoomSheetSingleFod);
         parent = findViewById(R.id.parent);
         close = findViewById(R.id.close);
@@ -74,6 +90,18 @@ public class SingleFod extends AppCompatActivity {
                 Log.d(TAG, "onClick: CLICK to make call ");
             }
         });
+        pendingPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pendingPaymentService = new Intent(getApplicationContext(), PaymentByBooking.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("bookingId", booking.getId());
+                bundle.putString("bookingNumber", booking.getNumber());
+                pendingPaymentService.putExtras(bundle);
+                startActivity(pendingPaymentService);
+            }
+        });
+
 //        sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
 //            @Override
 //            public void onStateChanged(@NonNull View bottomSheet, int newState) {
