@@ -4,6 +4,9 @@
 
 package com.flatsondemand.user.listener;
 
+import com.flatsondemand.user.model.Booking;
+
 public interface BookingItemListener {
     public  void onPaymentButtonClick(String bookingId  , String bookingNumber) ;
+    public  void onPaymentViewClick(Booking booking);
 }

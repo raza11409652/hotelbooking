@@ -5,18 +5,21 @@
 package com.flatsondemand.user.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.flatsondemand.user.R;
 import com.flatsondemand.user.listener.BookingItemListener;
 import com.flatsondemand.user.model.Booking;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     ArrayList<Booking> list;
     Context context;
     BookingItemListener listener;
+    String TAG = BookingAdapter.class.getSimpleName();
 
     public BookingAdapter(ArrayList<Booking> list, Context context, BookingItemListener bookingItemListener) {
         this.list = list;
@@ -43,16 +47,34 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.bookingNumber.setText(list.get(position).getNumber());
-        holder.property.setText(list.get(position).getPropertyName() + " - " + list.get(position).getRoomNumber());
-        holder.status.setText(list.get(position).getStatus());
-        holder.bookingPeriod.setText(list.get(position).getStartDate() + " TO " + list.get(position).getEndDate());
         holder.bookingAmount.setText(list.get(position).getAmount());
-        holder.payments.setOnClickListener(new View.OnClickListener() {
+        holder.property.setText(list.get(position).getPropertyName() + " - " + list.get(position).getRoomNumber());
+        holder.startDate.setText(list.get(position).getStartDate());
+        holder.endDate.setText(list.get(position).getEndDate());
+        holder.status.setText(list.get(position).getStatus());
+
+        /**
+         * Setting Dynamically 140sp Margin Bottom  to last Card view on Scroll till end
+         *
+         */
+        RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) holder.parent.getLayoutParams();
+        if (position == list.size() - 1) {
+            lp.setMargins(0, 0, 0, 140);
+            Log.d(TAG, "onBindViewHolder: Last Card encounter");
+        } else {
+            lp.setMargins(0, 0, 0, 0);
+        }
+
+        holder.parent.setLayoutParams(lp);
+
+
+        holder.viewPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onPaymentButtonClick(list.get(position).getId(), list.get(position).getNumber());
+                listener.onPaymentViewClick(list.get(position));
             }
         });
+        Picasso.get().load(list.get(position).getPropertyCoverImage()).into(holder.propertyImage);
 
     }
 
@@ -62,17 +84,22 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView bookingNumber, status, property, bookingPeriod, bookingAmount;
-        Button payments;
+        TextView bookingNumber, status, property, startDate, endDate, bookingAmount, viewPayment;
+        CardView parent;
+        ImageView propertyImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             bookingNumber = itemView.findViewById(R.id.booking_number);
-            status = itemView.findViewById(R.id.status);
-            property = itemView.findViewById(R.id.property_name);
-            bookingPeriod = itemView.findViewById(R.id.booking_period);
+            status = itemView.findViewById(R.id.booking_status);
+            property = itemView.findViewById(R.id.booking_property);
+            startDate = itemView.findViewById(R.id.booking_start_date);
+            endDate = itemView.findViewById(R.id.booking_end_date);
             bookingAmount = itemView.findViewById(R.id.booking_amount);
-            payments = itemView.findViewById(R.id.payment);
+            parent = itemView.findViewById(R.id.parent);
+            viewPayment = itemView.findViewById(R.id.view_payment);
+            propertyImage = itemView.findViewById(R.id.booking_property_image);
+
         }
     }
 }

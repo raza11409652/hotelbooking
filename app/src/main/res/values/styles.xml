@@ -12,6 +12,16 @@
 
     </style>
 
+    <style name="noACtionBarHome" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/home_primary</item>
+        <item name="colorPrimaryDark">@color/home_primary_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor">@color/home_primary_dark</item>
+        <item name="android:typeface">serif</item>
+
+    </style>
+
 
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/grey_black</item>
@@ -218,9 +228,9 @@
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
 
-    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" >
-<!--        <item name="android:colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="android:colorPrimaryDark">@color/colorPrimary</item>-->
-<!--        <item name="android:colorAccent">@color/colorAccent</item>-->
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
+        <!--        <item name="android:colorPrimary">@color/colorPrimary</item>-->
+        <!--        <item name="android:colorPrimaryDark">@color/colorPrimary</item>-->
+        <!--        <item name="android:colorAccent">@color/colorAccent</item>-->
     </style>
 </resources>

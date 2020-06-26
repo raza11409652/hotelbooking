@@ -37,4 +37,8 @@
     <color name="payment_card_start_color">#9F041B</color>
     <color name="help_start_color">#3023AE</color>
     <color name="help_end_color">#C86DD7</color>
+
+
+    <color name="home_primary_dark">#FAD961</color>
+    <color name="home_primary">#F76B1C</color>
 </resources>

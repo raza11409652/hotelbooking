@@ -9,59 +9,42 @@
     android:layout_height="match_parent"
     tools:context=".fragment.BookingFragment">
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/loader"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/data_loader_layout" />
-
-            <include layout="@layout/data_loader_layout" />
-
-            <!--            <include layout="@layout/data_loader_layout" />-->
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bookings"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
-
-    <RelativeLayout
-        android:id="@+id/no_booking_found"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:background="@drawable/booking_round_back"
         android:padding="@dimen/parent_padding"
-        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_200"
-            android:layout_centerInParent="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/search_not_found" />
 
         <TextView
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/image"
-            android:text="@string/no_active_booking_found"
+            android:layout_height="@dimen/size_200"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/my_booking"
             android:textAlignment="center"
-            android:textColor="@color/grey_black" />
-    </RelativeLayout>
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20"></TextView>
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_80"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></Space>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:scrollIndicators="none"
+
+        android:id="@+id/booking_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spacer">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

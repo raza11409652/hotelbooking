@@ -22,7 +22,7 @@
             android:parentActivityName=".activity.Home" />
         <activity
             android:name=".activity.Home"
-            android:theme="@style/noActionBar" />
+            android:theme="@style/noACtionBarHome" />
         <activity
             android:name=".activity.OtpVerify"
             android:parentActivityName=".activity.Login"

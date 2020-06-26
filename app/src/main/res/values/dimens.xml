@@ -31,4 +31,5 @@
     <dimen name="size_52">52sp</dimen>
     <dimen name="size_520">520sp</dimen>
     <dimen name="size_18">18sp</dimen>
+    <dimen name="size_80">80sp</dimen>
 </resources>

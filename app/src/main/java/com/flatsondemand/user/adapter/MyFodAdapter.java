@@ -33,10 +33,6 @@ public class MyFodAdapter extends RecyclerView.Adapter<MyFodAdapter.ViewHolder> 
         this.onMyFodClick = onMyFodClick;
     }
 
-    //    public MyFodAdapter(ArrayList<Booking> list, Context context) {
-////        this.list = list;
-////        this.context = context;
-////    }
 
     @NonNull
     @Override

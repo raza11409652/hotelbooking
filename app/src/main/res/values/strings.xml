@@ -48,4 +48,8 @@
     <string name="charges_internet">Internet handling charge</string>
     <string name="error_time_not_selected">Please select time slot</string>
     <string name="RZR_PAY_TOKEN">rzp_test_WUdRvYwRyXmnJs</string>
+    <string name="my_booking">My Bookings</string>
+    <string name="status">Status</string>
+    <string name="to">To</string>
+    <string name="view_payment">View payments</string>
 </resources>

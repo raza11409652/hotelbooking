@@ -4,82 +4,133 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="true"
-    app:cardCornerRadius="@dimen/size_8"
-    app:cardElevation="@dimen/size_0"
+    app:cardCornerRadius="@dimen/size_24"
+    app:cardElevation="@dimen/size_8"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/size_8">
+        android:padding="@dimen/parent_padding">
 
         <TextView
             android:id="@+id/booking_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BOOKING NUMBER"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chip_yellow"
-            android:text="status"
+            android:text="@string/bookings"
             android:textColor="@color/text_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/booking_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chip_background_accent"
+            android:text="@string/status"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
         <TextView
-            android:id="@+id/property_name"
+            android:id="@+id/booking_property"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_26"
-            android:text="PROPERTY NAME"
-            android:textColor="@color/text_color"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/size_8"
+            android:text="Property name"
+            android:textColor="@color/dark_grey"
             app:layout_constraintTop_toBottomOf="@id/booking_number"></TextView>
 
-        <TextView
-            android:id="@+id/booking_period"
+        <LinearLayout
+            android:id="@+id/image_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4"
-            android:drawableStart="@drawable/calander"
-            android:drawablePadding="@dimen/size_4"
-            android:drawableTint="@color/grey_black"
-            android:text="booking period"
-            android:textColor="@color/grey_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/property_name"></TextView>
+            android:layout_marginTop="@dimen/margin_top"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/booking_property">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0sp"
+                android:layout_height="@dimen/size_120"
+                android:layout_weight="0.8"
+                app:cardCornerRadius="@dimen/size_24"
+                app:cardElevation="@dimen/size_0">
+
+                <ImageView
+                    android:id="@+id/booking_property_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_120"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/single_property_fod"></ImageView>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:orientation="vertical"
+                android:padding="@dimen/parent_padding">
+
+                <TextView
+                    android:id="@+id/booking_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/calander"
+                    android:drawablePadding="@dimen/size_4"
+                    android:text="12-06-2020"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_20"></TextView>
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/to"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_20"></TextView>
+
+                <TextView
+                    android:id="@+id/booking_end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/calander"
+                    android:drawablePadding="@dimen/size_4"
+                    android:text="20-06-2021"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_20"></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/booking_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_4"
-            android:drawableStart="@drawable/indian_currnecy"
-            android:drawablePadding="@dimen/size_4"
-            android:drawableTint="@color/dark_grey"
-            android:text="Booking TIME"
-            android:textColor="@color/dark_grey"
-            android:textSize="@dimen/size_12"
-            app:layout_constraintTop_toBottomOf="@id/booking_period"></TextView>
-
-        <Button
-            android:id="@+id/payment"
-            style="@style/FlatButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/payment"
+            android:layout_marginTop="@dimen/margin_view_top"
+            android:background="@drawable/chip_background_accent"
+            android:text="Amount"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_holder"></TextView>
+
+        <TextView
+            android:id="@+id/view_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_view_top"
+            android:background="@drawable/contact_fod_back"
+            android:padding="@dimen/padding_8"
+            android:text="@string/view_payment"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/booking_amount"></Button>
+            app:layout_constraintTop_toBottomOf="@id/image_holder" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
