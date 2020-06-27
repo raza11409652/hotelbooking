@@ -7,6 +7,7 @@ package com.flatsondemand.user.utils;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -16,6 +17,10 @@ public class ShowSnackBar {
         snackbar.show();
     }
     public static void showWithConstraintLayout(String str, ConstraintLayout view) {
+        Snackbar snackbar = Snackbar.make(view.getChildAt(0), str, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+    }
+    public static void showWithCoordinateLayout(String str, CoordinatorLayout view) {
         Snackbar snackbar = Snackbar.make(view.getChildAt(0), str, Snackbar.LENGTH_SHORT);
         snackbar.show();
     }

@@ -10,6 +10,8 @@ public class Server {
     public static String ACTIVE_BOOKING = ROOT_URL + "activeBookings.php";
     public static String PAYMENTS_BY_BOOKING = ROOT_URL + "paymentsByBooking.php";
     public static String BOOKINGS = ROOT_URL + "bookings.php";
+    public static String COMPLAINTS_CAT = ROOT_URL + "complaintsCategory.php";
+    public static String COMPLAINTS_SUB_CAT = ROOT_URL + "complaintsSubCategory.php";
     public static String FREE_TIME_SLOT = ROOT_URL + "getFreeTimeSlot.php";
     public static String CREATE_HOUSE_KEEPING = ROOT_URL + "createHouseKeeping.php";
     public static String RAZOR_PAY_PAYMENT_UPDATE = ROOT_URL + "updatePaymentFromRazorPayStatus.php";

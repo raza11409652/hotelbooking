@@ -7,12 +7,14 @@ package com.flatsondemand.user.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -30,7 +32,7 @@ public class SingleFod extends AppCompatActivity {
     BottomSheetBehavior sheetBehavior;
     ConstraintLayout bottomSheetLayout;
     TextView contactHelpline, propertyName, roomNumber, status, moveInDate;
-    RelativeLayout houseKeeping;
+    RelativeLayout houseKeeping, complaints;
 
 //    public SingleFod(Booking booking) {
 //        this.booking = booking;
@@ -75,6 +77,17 @@ public class SingleFod extends AppCompatActivity {
         sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         contactHelpline = findViewById(R.id.contact_helpline);
         houseKeeping = findViewById(R.id.house_keeping);
+        complaints = findViewById(R.id.complaints);
+
+
+        complaints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent complaintsService = new Intent(getApplicationContext(), Complaints.class);
+                complaintsService.putExtra("booking", booking);
+                startActivity(complaintsService);
+            }
+        });
         houseKeeping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,4 +132,5 @@ public class SingleFod extends AppCompatActivity {
 
 
     }
+
 }

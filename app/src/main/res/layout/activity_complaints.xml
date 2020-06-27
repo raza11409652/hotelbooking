@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    tools:context=".activity.Complaints">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/app_bar" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/parent_padding"
+            android:text="@string/complaints_form"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_24"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"></TextView>
+
+        <LinearLayout
+            android:id="@+id/row_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_18"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <TextView
+                android:id="@+id/property_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="property name"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/size_18"></TextView>
+
+            <TextView
+                android:id="@+id/room_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Room number"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/size_18"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_8"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_18"
+            app:layout_constraintTop_toBottomOf="@id/row_1">
+
+            <TextView
+                android:id="@+id/select_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/accent_drop_down_slector"
+                android:drawableEnd="@drawable/calander"
+                android:padding="@dimen/parent_padding"
+                android:text="@string/select_category"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"></TextView>
+
+            <TextView
+                android:id="@+id/select_sub_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:background="@drawable/accent_drop_down_slector"
+                android:drawableEnd="@drawable/calander"
+                android:padding="@dimen/parent_padding"
+                android:text="@string/select_sub_category"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"></TextView>
+
+            <TextView
+                android:id="@+id/select_date_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:background="@drawable/click_text"
+                android:drawableEnd="@drawable/calander"
+                android:padding="@dimen/parent_padding"
+                android:text="@string/select_date"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/size_20"></TextView>
+
+            <EditText
+                android:hint="@string/remarks"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_120"
+                android:layout_marginTop="@dimen/margin_view_top"
+                android:background="@drawable/bg_input_accent"
+                android:inputType="textImeMultiLine"></EditText>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/complaints_submit_button"
+        android:layout_width="@dimen/size_64"
+        android:layout_height="@dimen/size_64"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/margin_view_top"
+        android:background="@drawable/round_btn_accnet_grad"
+        android:scaleType="centerInside"
+        android:src="@drawable/arrow_right"></ImageButton>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

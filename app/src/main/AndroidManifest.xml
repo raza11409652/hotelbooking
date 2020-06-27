@@ -11,8 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/noActionBar">
-        <activity android:name=".activity.HoseKeepingSchedule"></activity>
+        android:theme="@style/noActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.Complaints"></activity>
+        <activity android:name=".activity.HoseKeepingSchedule" />
         <activity
             android:name=".activity.SingleFod"
             android:theme="@style/noActionBarWithTransparent" />
