@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/size_4">
+
+    <ImageView
+        android:scaleType="centerInside"
+        android:id="@+id/image"
+        android:layout_width="@dimen/size_64"
+        android:layout_height="@dimen/size_64"
+        android:src="@drawable/home_icon_rent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/hint_paid_for_rent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_view_top"
+        android:text="@string/Paid_for_rent"
+        app:layout_constraintBottom_toTopOf="@id/image_elec"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:id="@+id/paid_for_rent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:textColor="@color/green_dark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/image_elec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+    <ImageView
+        android:id="@+id/image_elec"
+        android:layout_width="@dimen/size_64"
+        android:layout_height="@dimen/size_64"
+        android:scaleType="centerInside"
+        android:src="@drawable/electricity_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image"></ImageView>
+
+    <TextView
+        android:id="@+id/hint_for_elec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_view_top"
+        android:text="@string/Paid_for_elec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_elec"
+        app:layout_constraintTop_toBottomOf="@id/image"></TextView>
+
+    <TextView
+        android:id="@+id/paid_for_elec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:textColor="@color/green_dark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image"></TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

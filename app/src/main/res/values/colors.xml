@@ -41,4 +41,5 @@
 
     <color name="home_primary_dark">#FAD961</color>
     <color name="home_primary">#F76B1C</color>
+    <color name="accent_text">#F5A623</color>
 </resources>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,6 +59,8 @@ public class Complaints extends AppCompatActivity implements CategoryClickListen
     String categorySelectorId = null, subCategorySelectorId = null;
     BottomSheetDialog sheetDialog, subCatSheet;
     CoordinatorLayout parent;
+    ImageButton submitComplaints;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,7 @@ public class Complaints extends AppCompatActivity implements CategoryClickListen
 
         categorySelector = findViewById(R.id.select_category);
         subCategorySelector = findViewById(R.id.select_sub_category);
+        submitComplaints = findViewById(R.id.complaints_submit_button);
 
 
         try {
@@ -106,6 +110,25 @@ public class Complaints extends AppCompatActivity implements CategoryClickListen
                     return;
                 }
                 openSubCategoryBottomSheet(categorySelectorId);
+            }
+        });
+
+
+        submitComplaints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (categorySelectorId == null) {
+                    ShowSnackBar.showWithCoordinateLayout(getString(R.string.error_category_required), parent);
+
+                    return;
+                }
+                if (subCategorySelectorId == null) {
+                    ShowSnackBar.showWithCoordinateLayout(getString(R.string.error_sub_category_required), parent);
+                    return;
+                }
+
+
+
             }
         });
 

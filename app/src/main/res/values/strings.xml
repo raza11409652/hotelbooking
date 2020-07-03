@@ -57,4 +57,10 @@
     <string name="select_sub_category">Select Sub category</string>
     <string name="remarks">Remarks</string>
     <string name="error_category_required">Please select category first</string>
+    <string name="error_sub_category_required">Please select sub category</string>
+    <string name="payment_history">Payment history</string>
+    <string name="recent_payment">Recents</string>
+    <string name="Paid_for_rent">Paid for Rent</string>
+    <string name="Paid_for_elec">Paid for electricity</string>
+    <string name="wait">Pleas wait while fetching the details</string>
 </resources>

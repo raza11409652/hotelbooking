@@ -70,7 +70,7 @@ public class HoseKeepingSchedule extends AppCompatActivity implements TimeSlotLi
     ShowAlert showAlert;
     Booking booking;
     String userUid = null;
-    double billAmount = 100.00;
+    double billAmount = 97;
     double chargePercent = 2.5;
     double chargeAmount = 0.0, totalAmount = 0.0;
     ShowProgress progress;
@@ -114,13 +114,21 @@ public class HoseKeepingSchedule extends AppCompatActivity implements TimeSlotLi
             propertyName.setText(booking.getPropertyName());
             roomNumber.setText(booking.getRoomNumber());
             chargeAmount = billAmount * (chargePercent) / 100;
+            chargeAmount = Math.round(chargeAmount);
+
             totalAmount = billAmount + chargeAmount;
+            totalAmount = Integer.parseInt(String.valueOf(totalAmount));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         bill.setText("Rs." + billAmount);
-        charge.setText("Rs." + chargeAmount);
+        if (chargeAmount < 10) {
+            charge.setText("Rs. 0" + chargeAmount);
+        } else {
+            charge.setText("Rs." + chargeAmount);
+        }
+
         total.setText("Rs." + totalAmount);
 
         userUid = "nLUlFKXtMcaryhnqBKSg2iJ7AeA3";

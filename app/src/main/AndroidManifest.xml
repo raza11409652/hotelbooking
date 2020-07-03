@@ -7,13 +7,20 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/fod_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/fod_logo_round"
         android:supportsRtl="true"
         android:theme="@style/noActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.Complaints"></activity>
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".activity.OpenWebView"
+            android:parentActivityName=".activity.Home"></activity>
+        <activity
+            android:name=".activity.PaymentHistoryForBooking"
+            android:theme="@style/noACtionBarHome" />
+        <activity android:name=".activity.Complaints" />
         <activity android:name=".activity.HoseKeepingSchedule" />
         <activity
             android:name=".activity.SingleFod"

@@ -8,14 +8,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.flatsondemand.user.R;
-import com.flatsondemand.user.listener.PaymentClickListener;
 import com.flatsondemand.user.model.Payments;
 
 import java.util.ArrayList;
@@ -23,52 +22,34 @@ import java.util.ArrayList;
 public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Viewholder> {
     ArrayList<Payments> list;
     Context context;
-    PaymentClickListener listener;
 
-    public PaymentAdapter(ArrayList<Payments> list, Context context, PaymentClickListener listener) {
+    public PaymentAdapter(ArrayList<Payments> list, Context context) {
         this.list = list;
         this.context = context;
-        this.listener = listener;
     }
+
 
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_payment_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_payment_item, parent, false);
         return new PaymentAdapter.Viewholder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, final int position) {
-        holder.amountToBePaid.setText(list.get(position).getAmount());
-        holder.paymentId.setText("FOD_PAY_" + list.get(position).getId());
-        holder.status.setText(list.get(position).getStatus());
-        holder.paymentPeriod.setText(list.get(position).getStartDate() + " TO " + list.get(position).getEndDate());
-        holder.propertyName.setText(list.get(position).getRoom());
-        boolean isPaid = list.get(position).getPaid();
-        holder.dueDate.setText("Due Date " + list.get(position).getDueDate());
-        if (isPaid) {
-            holder.dueDate.setVisibility(View.GONE);
-            holder.status.setBackground(context.getDrawable(R.drawable.chip_green));
-            holder.payNow.setVisibility(View.GONE);
+        String electricity = list.get(position).getElectricity();
+        if (electricity.equals("0.00") || electricity == "0") {
+            holder.elect.setVisibility(View.GONE);
+            holder.hintElectricity.setVisibility(View.GONE);
+            holder.paidForElectricity.setVisibility(View.GONE);
         } else {
-            holder.dueDate.setVisibility(View.VISIBLE);
-            holder.payNow.setVisibility(View.VISIBLE);
-            holder.status.setBackground(context.getDrawable(R.drawable.chip_danger));
+            holder.elect.setVisibility(View.VISIBLE);
+            holder.hintElectricity.setVisibility(View.VISIBLE);
+            holder.paidForElectricity.setVisibility(View.VISIBLE);
+            holder.paidForElectricity.setText("RS." + list.get(position).getElectricity());
         }
-
-        holder.payNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onPaymentReceive(list.get(position).getAmount(), list.get(position).getId());
-            }
-        });
-        holder.details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onDetailsClick(list.get(position).getId());
-            }
-        });
+        holder.paidForRent.setText("Rs. " + list.get(position).getRent());
 
     }
 
@@ -78,21 +59,22 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Viewhold
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
-        TextView paymentId, propertyName, status, paymentPeriod, amountToBePaid, dueDate;
-        Button details, payNow;
+        TextView paidForRent, paidForElectricity, hintRent, hintElectricity;
+        ImageView rent, elect;
+
 
         public Viewholder(@NonNull View itemView) {
 
 
             super(itemView);
-            details = itemView.findViewById(R.id.details_btn);
-            paymentId = itemView.findViewById(R.id.payment_id);
-            propertyName = itemView.findViewById(R.id.property_name);
-            status = itemView.findViewById(R.id.status);
-            paymentPeriod = itemView.findViewById(R.id.payment_period);
-            amountToBePaid = itemView.findViewById(R.id.booking_amount);
-            dueDate = itemView.findViewById(R.id.due_date);
-            payNow = itemView.findViewById(R.id.pay_button);
+
+            paidForRent = itemView.findViewById(R.id.paid_for_rent);
+            paidForElectricity = itemView.findViewById(R.id.paid_for_elec);
+            hintRent = itemView.findViewById(R.id.hint_paid_for_rent);
+            hintElectricity = itemView.findViewById(R.id.hint_for_elec);
+            rent = itemView.findViewById(R.id.image);
+            elect = itemView.findViewById(R.id.image_elec);
+
         }
     }
 }

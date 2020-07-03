@@ -25,7 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.flatsondemand.user.R;
-import com.flatsondemand.user.activity.PaymentByBooking;
+import com.flatsondemand.user.activity.PaymentHistoryForBooking;
 import com.flatsondemand.user.adapter.BookingAdapter;
 import com.flatsondemand.user.listener.BookingItemListener;
 import com.flatsondemand.user.model.Booking;
@@ -77,14 +77,14 @@ public class BookingFragment extends Fragment implements BookingItemListener {
         bookingList.setHasFixedSize(true);
 
 
-        fetchActiveBooking();
+//        fetchActiveBooking();
 
 
     }
 
 
     private void fetchActiveBooking() {
-//        list = new ArrayList<>();
+        list = new ArrayList<>();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.ACTIVE_BOOKING, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -182,11 +182,19 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     public void onPaymentViewClick(Booking booking) {
 
         Log.d(TAG, "onPaymentViewClick: " + booking.getNumber());
-        Intent pendingPaymentService = new Intent(getContext(), PaymentByBooking.class);
+        Intent pendingPaymentService = new Intent(getContext(), PaymentHistoryForBooking.class);
         Bundle bundle = new Bundle();
         bundle.putString("bookingId", booking.getId());
         bundle.putString("bookingNumber", booking.getNumber());
         pendingPaymentService.putExtras(bundle);
         startActivity(pendingPaymentService);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: Fragment Resume");
+//        list = new ArrayList<>();
+        fetchActiveBooking();
     }
 }

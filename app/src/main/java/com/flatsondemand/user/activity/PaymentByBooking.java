@@ -162,6 +162,7 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
                                 String fine = single.getString("fine");
                                 String dueDate = single.getString("dueDate");
                                 Payments payment = new Payments(id, time, startDate, endDate, electricity, electricityRef, rent, others, status, submittedOn, paymode, paymodeRef, total, room, dueDate, fine, isPaid);
+
                                 payments.add(payment);
 
                             }
@@ -211,14 +212,14 @@ public class PaymentByBooking extends AppCompatActivity implements PaymentClickL
     }
 
     private void setAdapter(ArrayList<Payments> payments) {
-        PaymentAdapter adapter = new PaymentAdapter(payments, this, this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, linearLayoutManager.getOrientation());
-        paymentsHolder.setLayoutManager(linearLayoutManager);
-        paymentsHolder.addItemDecoration(dividerItemDecoration);
-
-        paymentsHolder.setAdapter(adapter);
+//        PaymentAdapter adapter = new PaymentAdapter(payments, this, this);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+//
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, linearLayoutManager.getOrientation());
+//        paymentsHolder.setLayoutManager(linearLayoutManager);
+//        paymentsHolder.addItemDecoration(dividerItemDecoration);
+//
+//        paymentsHolder.setAdapter(adapter);
 
     }
 
