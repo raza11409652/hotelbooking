@@ -1,18 +1,142 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ProfileFragment">
 
-   <Button
-       android:id="@+id/sprt"
-       android:text="supoprt"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"></Button>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/booking_round_back"
+        android:orientation="vertical"
+        android:padding="@dimen/parent_padding"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/your_profile"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20"></TextView>
+
+        <ImageView
+            android:layout_width="@dimen/size_120"
+            android:layout_height="@dimen/size_120"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_view_top"
+            android:src="@drawable/user_profile" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></Space>
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:elevation="@dimen/size_0"
+        app:cardElevation="@dimen/size_0"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spacer">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/house_keeping_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/click_text_btn"
+                    android:drawableStart="@drawable/maid_icon_24"
+                    android:drawablePadding="@dimen/padding_4"
+                    android:drawableTint="@color/accent_text"
+                    android:text="@string/house_keeping_history"
+                    android:textColor="@color/text_color"></TextView>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/complaints_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/click_text_btn"
+                    android:drawableStart="@drawable/complaints_icon_24"
+                    android:drawablePadding="@dimen/padding_4"
+                    android:drawableTint="@color/accent_text"
+                    android:text="@string/complaints_history"
+                    android:textColor="@color/text_color"></TextView>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/support"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/click_text_btn"
+                    android:drawableStart="@drawable/support_icon_24"
+                    android:drawablePadding="@dimen/padding_4"
+                    android:drawableTint="@color/accent_text"
+                    android:text="@string/support"
+                    android:textColor="@color/text_color"></TextView>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/privacy_policy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/click_text_btn"
+                    android:drawableStart="@drawable/privacy_policy_icon_24"
+                    android:drawablePadding="@dimen/padding_4"
+                    android:drawableTint="@color/accent_text"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/text_color"></TextView>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/terms_condition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/click_text_btn"
+                    android:drawableStart="@drawable/terms_conditions_icons_24"
+                    android:drawablePadding="@dimen/padding_4"
+                    android:drawableTint="@color/accent_text"
+                    android:text="@string/terms_condition"
+                    android:textColor="@color/text_color"></TextView>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/click_text_btn"
+                    android:drawableStart="@drawable/logout_icon_24"
+                    android:drawablePadding="@dimen/padding_4"
+                    android:drawableTint="@color/accent_text"
+                    android:text="@string/logout"
+                    android:textColor="@color/text_color"></TextView>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

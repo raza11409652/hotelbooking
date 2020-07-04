@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "1068536124980",
+    "firebase_url": "https://fodv2-be234.firebaseio.com",
+    "project_id": "fodv2-be234",
+    "storage_bucket": "fodv2-be234.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068536124980:android:bba1611a8be7f30c655c61",
+        "android_client_info": {
+          "package_name": "com.example.fod_user_ios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068536124980-7hv4kl15uqbssb1j3c3he26fq2ks3p94.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fod_user_ios",
+            "certificate_hash": "6715c326fda71fa2adc65d6eb6cf371d60170e08"
+          }
+        },
+        {
+          "client_id": "1068536124980-1g6or332s8u90l4kgiqiuqic8cpcqc51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7O7xaCwEjnZZH5CgXtYB1dgMzVqmTQQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068536124980-1g6or332s8u90l4kgiqiuqic8cpcqc51.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068536124980-9f3rc693hpp9e4530vugufd5og0t53vh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.foduser.ios"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068536124980:android:5364c597a56c838c655c61",
+        "android_client_info": {
+          "package_name": "com.flatsondemand.fod.care"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068536124980-1fuphcc7lqpfhikuaudh1i96ifcf2aed.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flatsondemand.fod.care",
+            "certificate_hash": "6715c326fda71fa2adc65d6eb6cf371d60170e08"
+          }
+        },
+        {
+          "client_id": "1068536124980-1g6or332s8u90l4kgiqiuqic8cpcqc51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7O7xaCwEjnZZH5CgXtYB1dgMzVqmTQQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068536124980-1g6or332s8u90l4kgiqiuqic8cpcqc51.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068536124980-9f3rc693hpp9e4530vugufd5og0t53vh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.foduser.ios"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068536124980:android:0276b1648b668ccf655c61",
+        "android_client_info": {
+          "package_name": "com.flatsondemand.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068536124980-2ilv00uqthe108igcjvbim3ndtbtf8as.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flatsondemand.user",
+            "certificate_hash": "6715c326fda71fa2adc65d6eb6cf371d60170e08"
+          }
+        },
+        {
+          "client_id": "1068536124980-1g6or332s8u90l4kgiqiuqic8cpcqc51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7O7xaCwEjnZZH5CgXtYB1dgMzVqmTQQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068536124980-1g6or332s8u90l4kgiqiuqic8cpcqc51.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068536124980-9f3rc693hpp9e4530vugufd5og0t53vh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.foduser.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

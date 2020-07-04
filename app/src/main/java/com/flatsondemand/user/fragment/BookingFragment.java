@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,8 @@ import com.flatsondemand.user.adapter.BookingAdapter;
 import com.flatsondemand.user.listener.BookingItemListener;
 import com.flatsondemand.user.model.Booking;
 import com.flatsondemand.user.utils.Server;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,11 +47,10 @@ import java.util.Map;
  */
 public class BookingFragment extends Fragment implements BookingItemListener {
     String TAG = BookingFragment.class.getSimpleName();
-    //    ShimmerFrameLayout loader;
-//    RecyclerView bookingLists;
-//    RelativeLayout noBookingFound;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
     ArrayList<Booking> list = new ArrayList<>();
-
+    RelativeLayout noBookingFound;
     RecyclerView bookingList;
 
 
@@ -61,12 +63,13 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
-//        loader = view.findViewById(R.id.loader);
-//        bookingLists = view.findViewById(R.id.bookings);
-//        noBookingFound = view.findViewById(R.id.no_booking_found);
-//        bookingLists.setHasFixedSize(true);
-//        loader.startShimmerAnimation();
-//        fetchActiveBooking();
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+
+        } else {
+            Log.d(TAG, "onCreateView: user is not login");
+        }
         return view;
     }
 
@@ -74,27 +77,22 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bookingList = view.findViewById(R.id.booking_list);
+        noBookingFound = view.findViewById(R.id.no_booking_found);
         bookingList.setHasFixedSize(true);
-
-
-//        fetchActiveBooking();
-
-
     }
 
 
-    private void fetchActiveBooking() {
+    private void fetchActiveBooking(final String userUid) {
         list = new ArrayList<>();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.ACTIVE_BOOKING, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     Boolean error = jsonObject.getBoolean("error");
                     if (error) {
-//                        noBookingFound.setVisibility(View.VISIBLE);
+                        Log.d(TAG, "onResponse: " + response);
+                        noBookingFound.setVisibility(View.VISIBLE);
                     } else {
                         JSONArray array = jsonObject.getJSONArray("records");
                         Log.d(TAG, "onResponse: " + array);
@@ -118,7 +116,8 @@ public class BookingFragment extends Fragment implements BookingItemListener {
                             }
                             setAdapter(list);
                         } else {
-//                            noBookingFound.setVisibility(View.VISIBLE);
+                            Log.d(TAG, "onResponse: no booking found");
+                            noBookingFound.setVisibility(View.VISIBLE);
                         }
                     }
                 } catch (JSONException e) {
@@ -130,7 +129,7 @@ public class BookingFragment extends Fragment implements BookingItemListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.d(TAG, "onErrorResponse: " + error.getMessage());
             }
         }) {
             /**
@@ -142,8 +141,8 @@ public class BookingFragment extends Fragment implements BookingItemListener {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> map = new HashMap<>();
-                map.put("auth-token", "TOKEN");
-                map.put("client-token", "nLUlFKXtMcaryhnqBKSg2iJ7AeA3");
+                map.put("auth-token", userUid);
+                map.put("client-token", userUid);
                 return map;
             }
 
@@ -157,6 +156,7 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     private void setAdapter(ArrayList<Booking> list) {
         BookingAdapter adapter = new BookingAdapter(list, getContext(), this);
         bookingList.setAdapter(adapter);
+        bookingList.setVisibility(View.VISIBLE);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
@@ -194,7 +194,7 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume: Fragment Resume");
-//        list = new ArrayList<>();
-        fetchActiveBooking();
+        Log.d(TAG, "onResume: " + user.getUid());
+        fetchActiveBooking(user.getUid());
     }
 }

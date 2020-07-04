@@ -8,25 +8,39 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.flatsondemand.user.R;
 
 public class OpenWebView extends AppCompatActivity {
     WebView webView;
-    ProgressDialog progressDialog ;
+    ProgressDialog progressDialog;
+    String url;
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("FOD support");
+//        setTitle("FOD support");
         setContentView(R.layout.activity_open_web_view);
+        try {
+            url = getIntent().getStringExtra("url");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeButtonEnabled(true);
+        setTitle("");
         webView = (WebView) findViewById(R.id.webview);
-        progressDialog = new ProgressDialog(this) ;
+        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.wait));
 
         webView.getSettings().setJavaScriptEnabled(true);
@@ -51,7 +65,7 @@ public class OpenWebView extends AppCompatActivity {
 //            }
 //        });
 
-        webView.loadUrl("http://192.168.1.13/fod/user_app/api/chat.php");
+        webView.loadUrl(url);
 
     }
 

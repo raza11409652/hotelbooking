@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+
+    <path
+        android:fillColor="@color/accent_text_ripple"
+        android:pathData="M26 32h-20c-3.314 0-6-2.686-6-6v-20c0-3.314 2.686-6 6-6h20c3.314 0 6 2.686 6 6v20c0 3.314-2.686 6-6 6z" />
+    <path
+        android:fillColor="@color/accent_text"
+        android:pathData="M23.87 8.07c-0.082-0.063-0.188-0.085-0.288-0.059l-10.916 2.848v-1.859c0-0.116-0.06-0.223-0.158-0.284s-0.221-0.067-0.324-0.015l-1.333 0.667 c-0.113 0.057 -0.184 0.172 -0.184 0.298 v1.713l-2.417 0.631 c-0.148 0.039 -0.25 0.172 -0.25 0.323 v1.333c0 0.103 0.048 0.201 0.13 0.264 0.058 0.046 0.13 0.07 0.203 0.07 0.028 0 0.056-0.004 0.084 -0.011l0.916-0.239v9.916c0 0.185 0.149 0.334 0.334 0.334h1.667v-8h9.333v8h1.667c0.184 0 0.333-0.149 0.333 -0.333v-13.395l1.084-0.283c0.147-0.038 0.249 -0.171 0.249 -0.322v-1.334c0-0.103-0.048-0.2-0.13-0.263z" />
+    <path
+        android:fillColor="@color/accent_text"
+        android:pathData="M12.333 22.333h7.333v1.667h-7.333z" />
+    <path
+        android:fillColor="@color/accent_text"
+        android:pathData="M12.333 19.667h7.333v1.667h-7.333z" />
+    <path
+        android:fillColor="@color/accent_text"
+        android:pathData="M12.333 17h7.333v1.667h-7.333z" />
+</vector>

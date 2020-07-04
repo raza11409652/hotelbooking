@@ -36,15 +36,42 @@
         app:layout_constraintTop_toTopOf="parent"></Space>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:scrollIndicators="none"
-
         android:id="@+id/booking_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollIndicators="none"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spacer">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/no_booking_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chip_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spacer">
+
+        <ImageView
+            android:src="@drawable/building"
+            android:id="@+id/image"
+            android:layout_width="@dimen/size_180"
+            android:layout_height="@dimen/size_180"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin_view_top" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:layout_marginTop="@dimen/size_64"
+            android:text="@string/no_active_booking_found"
+            android:textAlignment="center"></TextView>
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

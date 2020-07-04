@@ -16,20 +16,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.flatsondemand.user.activity.Home;
 import com.flatsondemand.user.activity.Login;
 import com.flatsondemand.user.utils.TypefaceUtil;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+    FirebaseAuth auth;
+    FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         try {
             TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Poppins-Regular.ttf");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        setContentView(R.layout.activity_main);
-        Intent login = new Intent(getApplicationContext(), Home.class);
-        startActivity(login);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if (user != null) {
+            Intent home = new Intent(getApplicationContext(), Home.class);
+            updateUi(home);
+        } else {
+            Intent login = new Intent(getApplicationContext(), Login.class);
+            updateUi(login);
+        }
+
+
+//        startActivity(login);
+//        finish();
+    }
+
+    private void updateUi(Intent intent) {
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         finish();
     }
 

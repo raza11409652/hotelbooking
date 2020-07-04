@@ -31,6 +31,8 @@ import com.flatsondemand.user.model.Booking;
 import com.flatsondemand.user.utils.Server;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +53,9 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
     ArrayList<Booking> list;
     BottomSheetDialog sheetDialog;
     ShimmerFrameLayout loader;
+    FirebaseAuth auth;
+    FirebaseUser user;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -62,7 +67,14 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view;
-        userId = "";
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if (user != null) {
+            userId = user.getUid();
+        } else {
+            Log.d(TAG, "onCreateView: User is not login");
+        }
+//        userId = "";
         view = inflater.inflate(R.layout.fragment_home, container, false);
         bookingsShortcut = view.findViewById(R.id.home_booking_shortcut);
         bookingsShortcut.setOnClickListener(new View.OnClickListener() {
@@ -149,8 +161,8 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> map = new HashMap<>();
-                map.put("auth-token", "TOKEN");
-                map.put("client-token", "nLUlFKXtMcaryhnqBKSg2iJ7AeA3");
+                map.put("auth-token", userId);
+                map.put("client-token", userId);
                 return map;
             }
 

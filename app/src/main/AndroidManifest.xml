@@ -14,7 +14,7 @@
         android:theme="@style/noActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:theme="@style/AppTheme"
+            android:theme="@style/noActionBar"
             android:name=".activity.OpenWebView"
             android:parentActivityName=".activity.Home"></activity>
         <activity
