@@ -13,10 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/noActionBar"
         android:usesCleartextTraffic="true">
-        <activity
-            android:theme="@style/noActionBar"
-            android:name=".activity.OpenWebView"
+        <activity android:name=".activity.SearchActivity"
             android:parentActivityName=".activity.Home"></activity>
+        <activity
+            android:name=".activity.OpenWebView"
+            android:parentActivityName=".activity.Home"
+            android:theme="@style/noActionBar" />
         <activity
             android:name=".activity.PaymentHistoryForBooking"
             android:theme="@style/noACtionBarHome" />

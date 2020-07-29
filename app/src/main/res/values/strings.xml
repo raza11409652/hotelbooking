@@ -71,4 +71,9 @@
     <string name="terms_condition">Terms and condition</string>
     <string name="logout">Logout</string>
     <string name="fod_living">FOD Living</string>
+    <string name="you_live_we_care">#You live we care</string>
+    <string name="search_near_by">Search near by</string>
+    <string name="enter_location">Search pocket friendly FOD near You</string>
+    <string name="location">Enter location</string>
+    <string name="cities">Cities</string>
 </resources>

@@ -12,26 +12,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingBottom="@dimen/size_32"
         android:background="@drawable/back_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
-            android:src="@drawable/fod_living"
+            android:src="@drawable/icon_home"
             android:id="@+id/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/size_180"
             android:layout_height="wrap_content"/>
-        <androidx.cardview.widget.CardView
-            android:elevation="10sp"
-            android:layout_marginTop="@dimen/margin_view_top"
+        <TextView
+            android:textSize="@dimen/size_18"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:text="@string/you_live_we_care"
+            android:id="@+id/logo_text"
             app:layout_constraintTop_toBottomOf="@id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></TextView>
+        <androidx.cardview.widget.CardView
+            app:cardUseCompatPadding="true"
+            android:clipToPadding="true"
+            android:elevation="10sp"
+            app:layout_constraintTop_toBottomOf="@id/logo_text"
             app:cardCornerRadius="@dimen/padding_28"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:id="@+id/search_bar"
+                android:hint="@string/search_near_by"
                 android:drawableTint="@color/dark_grey"
                 android:focusable="false"
                 android:drawablePadding="@dimen/padding_4"

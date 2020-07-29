@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flatsondemand.user.R;
+import com.flatsondemand.user.activity.SearchActivity;
 import com.flatsondemand.user.activity.SingleFod;
 import com.flatsondemand.user.adapter.MyFodAdapter;
 import com.flatsondemand.user.listener.OnMyFodClick;
@@ -56,6 +58,8 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
     FirebaseAuth auth;
     FirebaseUser user;
 
+    EditText searchBar;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -69,7 +73,7 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
         View view;
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        Log.d(TAG, "onCreateView: "+user.getUid());
+        Log.d(TAG, "onCreateView: " + user.getUid());
         if (user != null) {
             userId = user.getUid();
         } else {
@@ -78,6 +82,18 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
 //        userId = "";
         view = inflater.inflate(R.layout.fragment_home, container, false);
         bookingsShortcut = view.findViewById(R.id.home_booking_shortcut);
+        searchBar = view.findViewById(R.id.search_bar);
+
+
+        searchBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Open search activity
+                Intent searchAct = new Intent(getContext(), SearchActivity.class);
+                startActivity(searchAct);
+
+            }
+        });
         bookingsShortcut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +108,7 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.booking_shortcut_bottom_sheet, null);
         sheetDialog.setContentView(view);
         loader = view.findViewById(R.id.loader_layout);
+
         loader.startShimmerAnimation();
         RecyclerView listHolder = view.findViewById(R.id.list_my_fod);
         fetchActiveBooking(listHolder);

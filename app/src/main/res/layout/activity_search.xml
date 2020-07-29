@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Hackdroid Tech Author raza11409652 github www.github.com/raza11409652 Copyright (c)  2020
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.SearchActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/search_badge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        app:cardCornerRadius="@dimen/padding_28"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toBottomOf="@id/include">
+
+        <EditText
+            android:inputType="textPersonName"
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_input"
+            android:drawableStart="@drawable/search_icon"
+            android:drawablePadding="@dimen/padding_4"
+            android:drawableTint="@color/dark_grey"
+            android:focusable="true"
+            android:hint="@string/location"></EditText>
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:textSize="@dimen/size_20"
+        android:textColor="@color/text_color"
+        android:padding="@dimen/parent_padding"
+        android:text="@string/cities"
+        app:layout_constraintTop_toBottomOf="@id/search_badge"
+        android:id="@+id/cities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/cities"
+        android:id="@+id/location_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        app:duration="1000"
+        android:id="@+id/loader_layout"
+        app:layout_constraintTop_toBottomOf="@id/cities"
+        android:padding="@dimen/size_0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/loader"/>
+            <include layout="@layout/loader"/>
+            <include layout="@layout/loader"/>
+            <include layout="@layout/loader"/>
+        </LinearLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
