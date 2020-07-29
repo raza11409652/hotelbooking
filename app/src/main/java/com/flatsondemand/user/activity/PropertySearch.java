@@ -4,7 +4,6 @@
 
 package com.flatsondemand.user.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,9 +23,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flatsondemand.user.R;
-import com.flatsondemand.user.adapter.LocationAdapter;
-import com.flatsondemand.user.listener.LocationListener;
-import com.flatsondemand.user.model.LocationModel;
+import com.flatsondemand.user.adapter.PropertySearchAdapter;
+import com.flatsondemand.user.model.Property;
 import com.flatsondemand.user.utils.Constant;
 import com.flatsondemand.user.utils.Server;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,79 +38,89 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SearchActivity extends AppCompatActivity implements LocationListener {
-    ShimmerFrameLayout loader;
+public class PropertySearch extends AppCompatActivity {
     Toolbar toolbar;
+    String TAG = PropertySearch.class.getSimpleName();
+    String location = null;
+    ShimmerFrameLayout loader;
     FirebaseAuth auth;
     FirebaseUser user;
-    String userId = null;
-    String TAG = SearchActivity.class.getSimpleName();
-    ArrayList<LocationModel> arrayList;
-    RecyclerView recyclerView;
-    LocationAdapter adapter;
+    String userId;
+    ArrayList<Property> properties = new ArrayList<>();
+    RecyclerView list;
+    PropertySearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-
-        toolbar = findViewById(R.id.include);
-        recyclerView = findViewById(R.id.location_list);
+        setContentView(R.layout.activity_property_search);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeButtonEnabled(true);
+
         try {
+            Log.d(TAG, "onCreate: " + Constant.CURRENT_LOCATION);
+            location = Constant.CURRENT_LOCATION;
             auth = FirebaseAuth.getInstance();
             user = auth.getCurrentUser();
             userId = user.getUid();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /**
-         * TODO ::Init views
-         */
+        setTitle(location.toUpperCase());
 
-        loader = findViewById(R.id.loader_layout);
+        loader = findViewById(R.id.loader);
+        list = findViewById(R.id.list);
         loader.startShimmerAnimation();
 
 
-        if (userId != null) {
-            getLocation(userId);
+        if (location != null) {
+            searchProperty(location);
         }
+
+
     }
 
-    private void getLocation(final String userId) {
-        arrayList = new ArrayList<>();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.LOCATION, new Response.Listener<String>() {
+    private void searchProperty(final String location) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.SEARCH_PROPERTY, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                Log.d(TAG, "onResponse: " + response);
+                Log.d(TAG, "onResponse: " + response);
+
                 try {
+
                     JSONObject jsonObject = new JSONObject(response);
                     boolean error = jsonObject.getBoolean("error");
                     if (!error) {
-                        JSONArray records = jsonObject.getJSONArray("records");
-                        for (int i = 0; i < records.length(); i++) {
-                            JSONObject single = records.getJSONObject(i);
-                            String id = single.getString("location_id");
-                            String val = single.getString("location_val");
-                            LocationModel locationModel = new LocationModel(id, val);
-                            arrayList.add(locationModel);
+                        JSONArray array = jsonObject.getJSONArray("records");
+                        for (int i = 0; i < array.length(); i++) {
+//                          Log.d(TAG, "onResponse: " + array.getJSONObject(i));
+                            JSONObject single = array.getJSONObject(i);
+                            String id = single.getString("id");
+                            String name = single.getString("name");
+                            String price = single.getString("price");
+                            String image = single.getString("image");
+                            int numRoom = single.getInt("room");
+                            boolean mapped = single.getBoolean("mapped");
+                            Property property = new Property(id, name, price, image, numRoom, mapped);
+
+                            properties.add(property);
 
                         }
-                        setAdapter(arrayList);
+                        setAdapter(properties);
+
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d(TAG, "onErrorResponse: " + error.getMessage());
+
             }
         }) {
             @Override
@@ -121,28 +129,27 @@ public class SearchActivity extends AppCompatActivity implements LocationListene
                 map.put("auth-token", userId);
                 return map;
             }
-        };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("location", location);
+                return map;
+            }
+        };
+        RequestQueue d = Volley.newRequestQueue(this);
+        d.add(stringRequest);
     }
 
-    private void setAdapter(ArrayList<LocationModel> arrayList) {
+    private void setAdapter(ArrayList<Property> properties) {
         loader.stopShimmerAnimation();
         loader.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.VISIBLE);
-        adapter = new LocationAdapter(arrayList, this, this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        list.setVisibility(View.VISIBLE);
+        adapter = new PropertySearchAdapter(properties, this);
+        list.setHasFixedSize(true);
+        list.setAdapter(adapter);
+        list.setLayoutManager(new LinearLayoutManager(this));
 
-    }
 
-    @Override
-    public void onItemClick(LocationModel locationModel) {
-        Log.d(TAG, "onItemClick: " + locationModel.getName());
-        Constant.CURRENT_LOCATION = locationModel.getName();
-        Intent propertySearch = new Intent(getApplicationContext(), PropertySearch.class);
-        startActivity(propertySearch);
-        propertySearch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;
     }
 }

@@ -19,6 +19,7 @@ public class Server {
     public static String CREATE_HOUSE_KEEPING = ROOT_URL + "createHouseKeeping.php";
     public static String RAZOR_PAY_PAYMENT_UPDATE = ROOT_URL + "updatePaymentFromRazorPayStatus.php";
     public static String LOCATION = ROOT_URL + "location.php";
+    public static String SEARCH_PROPERTY = ROOT_URL + "searchproperty.php";
 
 
 

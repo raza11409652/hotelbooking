@@ -6,4 +6,5 @@ package com.flatsondemand.user.utils;
 
 public class Constant {
     public static String CURRENT_PAYMENT_ID = null ;
+    public static String CURRENT_LOCATION = null ;
 }

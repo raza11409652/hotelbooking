@@ -19,10 +19,10 @@ import com.flatsondemand.user.model.LocationModel;
 
 import java.util.ArrayList;
 
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder>  {
-    ArrayList<LocationModel>list  ;
-    Context context ;
-    LocationListener locationListener ;
+public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
+    ArrayList<LocationModel> list;
+    Context context;
+    LocationListener locationListener;
 
     public LocationAdapter(ArrayList<LocationModel> list, Context context, LocationListener locationListener) {
         this.list = list;
@@ -33,17 +33,17 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View   view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_location, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_location, parent, false);
         return new LocationAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.location.setText(list.get(position).getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                locationListener.onItemClick(list.get(position));
             }
         });
     }
@@ -54,7 +54,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView location ;
+        TextView location;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             location = itemView.findViewById(R.id.location);
