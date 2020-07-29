@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment implements OnMyFodClick {
         View view;
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+        Log.d(TAG, "onCreateView: "+user.getUid());
         if (user != null) {
             userId = user.getUid();
         } else {

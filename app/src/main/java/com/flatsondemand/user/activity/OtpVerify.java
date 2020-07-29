@@ -4,6 +4,7 @@
 
 package com.flatsondemand.user.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -148,11 +149,10 @@ public class OtpVerify extends AppCompatActivity {
                 showProgress.dismiss();
                 if (task.isSuccessful()) {
                     Log.d(TAG, "onComplete: Login success");
-                    userService.userVerification(task.getResult().getUser().getUid(), mobileNumber);
-//                    Intent home = new Intent(getApplicationContext(), Home.class);
-//                    home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    startActivity(home);
-//                    finish();
+                    Intent home = new Intent(getApplicationContext(), Home.class);
+                    home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(home);
+                    finish();
                 } else {
                     Log.d(TAG, "onComplete: Login not success");
                 }

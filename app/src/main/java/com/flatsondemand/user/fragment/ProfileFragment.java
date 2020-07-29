@@ -52,6 +52,19 @@ public class ProfileFragment extends Fragment {
         support = view.findViewById(R.id.support);
         privacyPolicy = view.findViewById(R.id.privacy_policy);
         termsConditions = view.findViewById(R.id.terms_condition);
+
+        privacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebView(Server.PRIVACY_POLICY);
+            }
+        });
+        termsConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebView(Server.TERMS_COND);
+            }
+        });
         logout = view.findViewById(R.id.logout);
 
         houseKeeping.setOnClickListener(new View.OnClickListener() {
