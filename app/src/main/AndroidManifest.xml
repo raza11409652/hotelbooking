@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/noActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.PropertyView" android:parentActivityName=".activity.PropertySearch"></activity>
         <activity
             android:name=".activity.PropertySearch"
-            android:parentActivityName=".activity.SearchActivity"></activity>
+            android:parentActivityName=".activity.SearchActivity" />
         <activity
             android:name=".activity.SearchActivity"
             android:parentActivityName=".activity.Home" />

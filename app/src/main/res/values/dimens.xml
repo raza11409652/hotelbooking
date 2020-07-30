@@ -35,4 +35,5 @@
     <dimen name="size_180">180sp</dimen>
     <dimen name="size_320">320sp</dimen>
     <dimen name="size_290">290sp</dimen>
+    <dimen name="size_2">2sp</dimen>
 </resources>

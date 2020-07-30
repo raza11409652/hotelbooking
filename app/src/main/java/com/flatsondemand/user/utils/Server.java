@@ -20,6 +20,7 @@ public class Server {
     public static String RAZOR_PAY_PAYMENT_UPDATE = ROOT_URL + "updatePaymentFromRazorPayStatus.php";
     public static String LOCATION = ROOT_URL + "location.php";
     public static String SEARCH_PROPERTY = ROOT_URL + "searchproperty.php";
+    public static String WISHLIST_TOGGLE = ROOT_URL + "userwish.php";
 
 
 
@@ -30,6 +31,7 @@ public class Server {
 
     public static String PRIVACY_POLICY = "https://www.flatsondemand.in/?view=privacy-policy";
     public static String TERMS_COND = "https://www.flatsondemand.in/?view=terms";
+    public static String HERE_MAP_PLACE = "https://discover.search.hereapi.com/v1/discover";
 
 
 

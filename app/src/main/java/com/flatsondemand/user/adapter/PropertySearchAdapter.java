@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.flatsondemand.user.R;
+import com.flatsondemand.user.listener.OnPropertyClick;
 import com.flatsondemand.user.model.Property;
 import com.squareup.picasso.Picasso;
 
@@ -25,11 +26,13 @@ import java.util.ArrayList;
 public class PropertySearchAdapter extends RecyclerView.Adapter<PropertySearchAdapter.ViewHolder> {
     ArrayList<Property> list;
     Context context;
+    OnPropertyClick onPropertyClick;
     String TAG = PropertySearchAdapter.class.getSimpleName();
 
-    public PropertySearchAdapter(ArrayList<Property> list, Context context) {
+    public PropertySearchAdapter(ArrayList<Property> list, Context context, OnPropertyClick onPropertyClick) {
         this.list = list;
         this.context = context;
+        this.onPropertyClick = onPropertyClick;
     }
 
     @NonNull
@@ -55,11 +58,23 @@ public class PropertySearchAdapter extends RecyclerView.Adapter<PropertySearchAd
         holder.propertyName.setText(list.get(position).getName());
         holder.propertyPrice.setText(list.get(position).getPrice());
         if (list.get(position).getRoom() > 0) {
-            holder.roomLeft.setText("Hurry only " + list.get(position).getRoom() + "room left");
+            holder.roomLeft.setText("Hurry only " + list.get(position).getRoom() + " room left");
         } else {
             holder.roomLeft.setText("Filling fast");
         }
 
+        holder.heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPropertyClick.onHeartIconClick(list.get(position));
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPropertyClick.onItemClick(list.get(position));
+            }
+        });
         Picasso.get().load(list.get(position).getImage()).placeholder(R.drawable.single_property_fod)
                 .error(R.drawable.single_property_fod).into(holder.coverImage);
     }

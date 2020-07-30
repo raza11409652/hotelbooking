@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.PropertyView">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@color/grey_black"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/single_property_fod"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/blackIconToolbar"
+                android:title="@string/house_keeping"
+                android:tooltipText="@string/app_name"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/parent_padding">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="true"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/parent_padding"
+                segmentedgroup:cardCornerRadius="@dimen/size_12">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/propertyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/grey_black"
+                        android:textSize="@dimen/size_18" />
+
+                    <TextView
+                        android:id="@+id/propertyPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_2"
+                        android:drawableStart="@drawable/indian_currnecy"
+                        android:drawablePadding="@dimen/size_2"
+                        android:drawableTint="@color/accent_text"
+                        android:text="@string/price"
+                        android:textColor="@color/accent_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/propertyAdd"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_4"
+                            android:layout_marginBottom="@dimen/padding_4"
+                            android:layout_weight="2.4"
+                            android:text="@string/address" />
+
+                        <TextView
+                            android:id="@+id/type"
+
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_weight=".6"
+                            android:background="@drawable/contact_fod_back"
+                            android:padding="@dimen/size_4"
+                            android:text="@string/type"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/size_4"
+                android:textColor="@color/text_color"
+                android:layout_marginBottom="@dimen/size_2"
+                android:text="@string/near_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nearby_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/location_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/parent_padding"
+            android:weightSum="3">
+
+            <Button
+                style="@style/accent_btn_small"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_1"
+                android:layout_weight="2"
+                android:text="@string/book_now"></Button>
+
+            <Button
+                style="@style/accent_btn_small"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_1"
+                android:layout_weight="1"
+                android:text="@string/visit"></Button>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -76,4 +76,11 @@
     <string name="enter_location">Search pocket friendly FOD near You</string>
     <string name="location">Enter location</string>
     <string name="cities">Cities</string>
+    <string name="price">Price</string>
+    <string name="address">Address</string>
+    <string name="type">Type</string>
+    <string name="book_now">"Rent Now "</string>
+    <string name="visit">visit</string>
+    <string name="here_api_key">dK5pSm1P21jSe73-Pm2s242ZMJXXLNpj3hRn4vU6AAo</string>
+    <string name="near_by">Near by</string>
 </resources>
