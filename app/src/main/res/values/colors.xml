@@ -3,7 +3,7 @@
     <color name="colorPrimary">#FFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color  name="white">#FFFFFF</color>
-    <color name="colorAccent">#FF660C</color>
+    <color name="colorAccent">#49A078</color>
     <color name="grey_black">#222222</color>
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
@@ -13,10 +13,10 @@
     <color name="cyan">#37CEDB </color>
     <color name="note_back">#E0F0FF</color>
     <color name="tab_indicator_gray">#c0c0c0</color>
-    <color name="btn_primary_start">#FF9201</color>
+    <color name="btn_primary_start">#49A078</color>
     <color name="shimeerback">#e9ecef</color>
     <color name="dark_grey">#888888</color>
-    <color name="btn_primary_end">#FF660C</color>
+    <color name="btn_primary_end">#216869</color>
     <color name="green_dark">#28A745</color>
     <color name="warning_back">#fff3cd</color>
     <color name="green_liht">#8BBA47</color>
@@ -31,16 +31,16 @@
     <color name="yellow_ripple">#FAEB90</color>
     <color name="text_color">#070600</color>
     <color name="success_green_ripple">#A4FFCE</color>
-    <color name="background_start_color">#FAD961</color>
-    <color name="background_end_color">#F76B1C</color>
+    <color name="background_start_color">#49A078</color>
+    <color name="background_end_color">#01512D</color>
     <color name="payment_card_end_color">#F5515F</color>
     <color name="payment_card_start_color">#9F041B</color>
     <color name="help_start_color">#3023AE</color>
     <color name="help_end_color">#C86DD7</color>
 
 
-    <color name="home_primary_dark">#FAD961</color>
+    <color name="home_primary_dark">#49A078</color>
     <color name="home_primary">#F76B1C</color>
-    <color name="accent_text">#F5A623</color>
-    <color name="accent_text_ripple">#FFCE91</color>
+    <color name="accent_text">#216869</color>
+    <color name="accent_text_ripple">#B9F7F8</color>
 </resources>

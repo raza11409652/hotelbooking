@@ -11,17 +11,17 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.flatsondemand.user.fragment.HomeFragment"
+        android:name="com.hotel.user.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/bookings"
-        android:name="com.flatsondemand.user.fragment.BookingFragment"
+        android:name="com.hotel.user.fragment.BookingFragment"
         android:label="fragment_booking"
         tools:layout="@layout/fragment_booking" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.flatsondemand.user.fragment.ProfileFragment"
+        android:name="com.hotel.user.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

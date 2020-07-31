@@ -6,7 +6,7 @@
     <item>
         <bitmap
             android:gravity="center_vertical|center_horizontal"
-            android:src="@drawable/fod_app_logo_splash" />
+            android:src="@drawable/hoterllogo" />
 
     </item>
 

@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/booking_round_back"
+        android:background="@drawable/back_home"
         android:orientation="vertical"
         android:padding="@dimen/parent_padding"
         app:layout_constraintTop_toTopOf="parent">
@@ -63,29 +63,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:gravity="center_vertical"
-                    android:id="@+id/house_keeping_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/click_text_btn"
-                    android:drawableStart="@drawable/maid_icon_24"
-                    android:drawablePadding="@dimen/padding_4"
-                    android:drawableTint="@color/accent_text"
-                    android:text="@string/house_keeping_history"
-                    android:textColor="@color/text_color"></TextView>
 
-                <TextView
-                    android:gravity="center_vertical"
-                    android:id="@+id/complaints_history"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/click_text_btn"
-                    android:drawableStart="@drawable/complaints_icon_24"
-                    android:drawablePadding="@dimen/padding_4"
-                    android:drawableTint="@color/accent_text"
-                    android:text="@string/complaints_history"
-                    android:textColor="@color/text_color"></TextView>
 
                 <TextView
                     android:gravity="center_vertical"

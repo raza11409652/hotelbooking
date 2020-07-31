@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Flatsondemand</string>
+    <string name="app_name">Hotel booking</string>
     <string name="hint_mobile">9876543210</string>
     <string name="login">Login</string>
     <string name="Hiuser">Hi User !</string>
@@ -79,7 +79,7 @@
     <string name="price">Price</string>
     <string name="address">Address</string>
     <string name="type">Type</string>
-    <string name="book_now">"Rent Now "</string>
+    <string name="book_now">"Book Now "</string>
     <string name="visit">visit</string>
     <string name="here_api_key">dK5pSm1P21jSe73-Pm2s242ZMJXXLNpj3hRn4vU6AAo</string>
     <string name="near_by">Near by</string>
