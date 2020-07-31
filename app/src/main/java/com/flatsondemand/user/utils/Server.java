@@ -21,6 +21,7 @@ public class Server {
     public static String LOCATION = ROOT_URL + "location.php";
     public static String SEARCH_PROPERTY = ROOT_URL + "searchproperty.php";
     public static String WISHLIST_TOGGLE = ROOT_URL + "userwish.php";
+    public static String DATE_SELECTOR = ROOT_URL + "getdate.php";
 
 
 
