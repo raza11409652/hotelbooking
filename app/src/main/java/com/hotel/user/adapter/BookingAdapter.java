@@ -48,10 +48,10 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.bookingNumber.setText(list.get(position).getNumber());
         holder.bookingAmount.setText(list.get(position).getAmount());
-        holder.property.setText(list.get(position).getPropertyName() + " - " + list.get(position).getRoomNumber());
+        holder.property.setText("FOD" + list.get(position).getPropertyId());
         holder.startDate.setText(list.get(position).getStartDate());
         holder.endDate.setText(list.get(position).getEndDate());
-        holder.status.setText(list.get(position).getStatus());
+//        holder.status.setText(list.get(position).getStatus());
 
         /**
          * Setting Dynamically 140sp Margin Bottom  to last Card view on Scroll till end
@@ -74,7 +74,8 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                 listener.onPaymentViewClick(list.get(position));
             }
         });
-        Picasso.get().load(list.get(position).getPropertyCoverImage()).into(holder.propertyImage);
+       // Picasso.get().load(list.get(position).getPropertyCoverImage()).placeholder() into(holder.propertyImage);
+
 
     }
 

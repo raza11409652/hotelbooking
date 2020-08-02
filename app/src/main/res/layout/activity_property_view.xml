@@ -127,6 +127,60 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <LinearLayout
+                android:padding="@dimen/parent_padding"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:background="@drawable/click_text"
+                    android:id="@+id/select_start_date"
+                    android:drawablePadding="@dimen/size_4"
+                    android:drawableStart="@drawable/calander"
+                    android:layout_weight="1"
+                    android:text="Select start Date"
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"></TextView>
+                <TextView
+                    android:background="@drawable/click_text"
+                    android:id="@+id/select_end_date"
+                    android:drawablePadding="@dimen/size_4"
+                    android:drawableStart="@drawable/calander"
+                    android:layout_gravity="end"
+                    android:text="Select end Date"
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"></TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/chip_danger"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="Rule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TextView>
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="Rule 1 check in time 11 : 00 AM "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TextView>
+                <TextView
+                android:textColor="@color/white"
+                android:text="Rule 2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TextView>
+                <TextView
+                android:textColor="@color/white"
+                android:text="Rule 3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
+
             <TextView
                 android:textStyle="bold"
                 android:layout_marginLeft="@dimen/size_4"
@@ -161,6 +215,7 @@
             android:weightSum="3">
 
             <Button
+                android:id="@+id/booking"
                 style="@style/accent_btn_small"
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"

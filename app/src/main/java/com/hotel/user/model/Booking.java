@@ -12,19 +12,7 @@ public class Booking implements Serializable {
             propertyId, propertyName , propertyCoverImage;
 
 
-    public Booking(String id, String number, String bookingDate, String startDate, String endDate, String status, String amount, String roomId, String roomNumber, String propertyId, String propertyName) {
-        this.id = id;
-        this.number = number;
-        this.bookingDate = bookingDate;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.status = status;
-        this.amount = amount;
-        this.roomId = roomId;
-        this.roomNumber = roomNumber;
-        this.propertyId = propertyId;
-        this.propertyName = propertyName;
-    }
+
 
     public Booking(String id, String number, String bookingDate, String startDate, String endDate, String status, String amount, String roomId, String roomNumber, String propertyId, String propertyName, String propertyCoverImage) {
         this.id = id;
@@ -39,6 +27,18 @@ public class Booking implements Serializable {
         this.propertyId = propertyId;
         this.propertyName = propertyName;
         this.propertyCoverImage = propertyCoverImage;
+    }
+
+    public Booking(String id, String number, String date, String startDate, String endDate, String amount, String propertyId) {
+        this.id = id ;
+        this.number = number ;
+        this.bookingDate = date ;
+        this.startDate  =startDate ;
+        this.endDate = endDate ;
+        this.amount = amount ;
+        this.propertyId = propertyId ;
+//        this.propertyName = property ;
+       // this.propertyCoverImage = propertyCoverImage ;
     }
 
     public String getPropertyCoverImage() {

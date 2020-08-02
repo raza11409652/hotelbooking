@@ -30,6 +30,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.hotel.user.R;
 import com.hotel.user.adapter.TimeSlotAdapter;
 import com.hotel.user.listener.TimeSlotListener;
@@ -74,7 +76,8 @@ public class HoseKeepingSchedule extends AppCompatActivity implements TimeSlotLi
     double chargePercent = 2.5;
     double chargeAmount = 0.0, totalAmount = 0.0;
     ShowProgress progress;
-
+    FirebaseAuth auth  ;
+    FirebaseUser user ;
     Button payNow;
     Checkout checkout;
 
@@ -118,6 +121,10 @@ public class HoseKeepingSchedule extends AppCompatActivity implements TimeSlotLi
 
             totalAmount = billAmount + chargeAmount;
             totalAmount = Integer.parseInt(String.valueOf(totalAmount));
+
+            auth =FirebaseAuth.getInstance() ;
+            user = auth.getCurrentUser() ;
+            userUid = user  .getUid() ;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,7 +138,7 @@ public class HoseKeepingSchedule extends AppCompatActivity implements TimeSlotLi
 
         total.setText("Rs." + totalAmount);
 
-        userUid = "nLUlFKXtMcaryhnqBKSg2iJ7AeA3";
+
 /**
  * Calender bottom Sheet
  */

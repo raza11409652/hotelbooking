@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -88,6 +89,7 @@ public class BookingFragment extends Fragment implements BookingItemListener {
             @Override
             public void onResponse(String response) {
                 try {
+                   // Toast.makeText(getContext() , ""+response , Toast.LENGTH_SHORT).show();
                     JSONObject jsonObject = new JSONObject(response);
                     Boolean error = jsonObject.getBoolean("error");
                     if (error) {
@@ -104,14 +106,14 @@ public class BookingFragment extends Fragment implements BookingItemListener {
                                 String date = single.getString("booking_time");
                                 String startDate = single.getString("booking_start_date");
                                 String endDate = single.getString("booking_end_date");
-                                String status = single.getString("booking_status_val");
+//                                String status = single.getString("booking_status_val");
                                 String amount = single.getString("booking_amount");
-                                String property = single.getString("property_name");
-                                String room = single.getString("room_number");
-                                String roomId = single.getString("room_id");
-                                String propertyId = single.getString("property_id");
-                                String propertyCoverImage = single.getString("property_cover_image");
-                                Booking booking = new Booking(id, number, date, startDate, endDate, status, amount, roomId, room, propertyId, property, propertyCoverImage);
+//                                String property = single.getString("property_name");
+//                                String room = single.getString("room_number");
+//                                String roomId = single.getString("room_id");
+                                String propertyId = single.getString("booking_property");
+                                //String propertyCoverImage = single.getString("property_cover_image");
+                                Booking booking = new Booking(id, number, date, startDate, endDate, amount,  propertyId);
                                 list.add(booking);
                             }
                             setAdapter(list);
