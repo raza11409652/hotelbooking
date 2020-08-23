@@ -83,4 +83,6 @@
     <string name="visit">visit</string>
     <string name="here_api_key">dK5pSm1P21jSe73-Pm2s242ZMJXXLNpj3hRn4vU6AAo</string>
     <string name="near_by">Near by</string>
+    <string name="checkin">Check in</string>
+    <string name="otp_screen_hint">Please enter six digit OTP sent to your mobile number</string>
 </resources>

@@ -23,6 +23,7 @@ public class Server {
     public static String WISHLIST_TOGGLE = ROOT_URL + "userwish.php";
     public static String DATE_SELECTOR = ROOT_URL + "getdate.php";
     public static String CREATE_BOOKING = ROOT_URL + "createbooking.php";
+    public static String VERIFY = ROOT_URL + "verify_mobile.php";
 
 
 

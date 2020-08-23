@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hotel.user.R;
 import com.hotel.user.listener.BookingItemListener;
 import com.hotel.user.model.Booking;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -52,7 +51,12 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.startDate.setText(list.get(position).getStartDate());
         holder.endDate.setText(list.get(position).getEndDate());
 //        holder.status.setText(list.get(position).getStatus());
-
+        boolean status = list.get(position).isIschecked();
+        if (status) {
+            holder.checkIn.setVisibility(View.GONE);
+        } else {
+            holder.checkIn.setVisibility(View.VISIBLE);
+        }
         /**
          * Setting Dynamically 140sp Margin Bottom  to last Card view on Scroll till end
          *
@@ -68,13 +72,13 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.parent.setLayoutParams(lp);
 
 
-        holder.viewPayment.setOnClickListener(new View.OnClickListener() {
+        holder.checkIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onPaymentViewClick(list.get(position));
+                listener.onCheckInClick(list.get(position));
             }
         });
-       // Picasso.get().load(list.get(position).getPropertyCoverImage()).placeholder() into(holder.propertyImage);
+        // Picasso.get().load(list.get(position).getPropertyCoverImage()).placeholder() into(holder.propertyImage);
 
 
     }
@@ -85,7 +89,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView bookingNumber, status, property, startDate, endDate, bookingAmount, viewPayment;
+        TextView bookingNumber, status, property, startDate, endDate, bookingAmount, checkIn;
         CardView parent;
         ImageView propertyImage;
 
@@ -98,7 +102,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             endDate = itemView.findViewById(R.id.booking_end_date);
             bookingAmount = itemView.findViewById(R.id.booking_amount);
             parent = itemView.findViewById(R.id.parent);
-            viewPayment = itemView.findViewById(R.id.view_payment);
+            checkIn = itemView.findViewById(R.id.check_in);
             propertyImage = itemView.findViewById(R.id.booking_property_image);
 
         }

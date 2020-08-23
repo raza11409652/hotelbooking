@@ -8,5 +8,5 @@ import com.hotel.user.model.Booking;
 
 public interface BookingItemListener {
     public  void onPaymentButtonClick(String bookingId  , String bookingNumber) ;
-    public  void onPaymentViewClick(Booking booking);
+    public  void onCheckInClick(Booking booking);
 }

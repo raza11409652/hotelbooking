@@ -5,14 +5,38 @@
 package com.hotel.user.model;
 
 import java.io.Serializable;
+
 @SuppressWarnings("serial")
 public class Booking implements Serializable {
 
     String id, number, bookingDate, startDate, endDate, status, amount, roomId, roomNumber,
-            propertyId, propertyName , propertyCoverImage;
+            propertyId, propertyName, propertyCoverImage;
+    boolean ischecked;
 
+    public Booking(String id, String number, String bookingDate, String startDate, String endDate, String status, String amount,
+                   String roomId, String roomNumber, String propertyId, String propertyName, String propertyCoverImage, boolean ischecked) {
+        this.id = id;
+        this.number = number;
+        this.bookingDate = bookingDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+        this.amount = amount;
+        this.roomId = roomId;
+        this.roomNumber = roomNumber;
+        this.propertyId = propertyId;
+        this.propertyName = propertyName;
+        this.propertyCoverImage = propertyCoverImage;
+        this.ischecked = ischecked;
+    }
 
+    public boolean isIschecked() {
+        return ischecked;
+    }
 
+    public void setIschecked(boolean ischecked) {
+        this.ischecked = ischecked;
+    }
 
     public Booking(String id, String number, String bookingDate, String startDate, String endDate, String status, String amount, String roomId, String roomNumber, String propertyId, String propertyName, String propertyCoverImage) {
         this.id = id;
@@ -29,16 +53,17 @@ public class Booking implements Serializable {
         this.propertyCoverImage = propertyCoverImage;
     }
 
-    public Booking(String id, String number, String date, String startDate, String endDate, String amount, String propertyId) {
-        this.id = id ;
-        this.number = number ;
-        this.bookingDate = date ;
-        this.startDate  =startDate ;
-        this.endDate = endDate ;
-        this.amount = amount ;
-        this.propertyId = propertyId ;
+    public Booking(String id, String number, String date, String startDate, String endDate, String amount, String propertyId , boolean ischecked) {
+        this.id = id;
+        this.number = number;
+        this.bookingDate = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.amount = amount;
+        this.propertyId = propertyId;
+        this.ischecked = ischecked;
 //        this.propertyName = property ;
-       // this.propertyCoverImage = propertyCoverImage ;
+        // this.propertyCoverImage = propertyCoverImage ;
     }
 
     public String getPropertyCoverImage() {

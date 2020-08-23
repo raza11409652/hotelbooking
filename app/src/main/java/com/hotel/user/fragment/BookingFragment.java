@@ -4,12 +4,14 @@
 
 package com.hotel.user.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -26,14 +28,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.hotel.user.R;
-import com.hotel.user.activity.PaymentHistoryForBooking;
 import com.hotel.user.adapter.BookingAdapter;
 import com.hotel.user.listener.BookingItemListener;
 import com.hotel.user.model.Booking;
 import com.hotel.user.utils.Server;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.hotel.user.utils.ShowProgress;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +56,8 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     ArrayList<Booking> list = new ArrayList<>();
     RelativeLayout noBookingFound;
     RecyclerView bookingList;
-
+    ShowProgress showProgress;
+    BottomSheetDialog sheetDialog;
 
     public BookingFragment() {
         // Required empty public constructor
@@ -65,6 +69,7 @@ public class BookingFragment extends Fragment implements BookingItemListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
         firebaseAuth = FirebaseAuth.getInstance();
+        showProgress = new ShowProgress(getContext());
         user = firebaseAuth.getCurrentUser();
         if (user != null) {
 
@@ -89,7 +94,7 @@ public class BookingFragment extends Fragment implements BookingItemListener {
             @Override
             public void onResponse(String response) {
                 try {
-                   // Toast.makeText(getContext() , ""+response , Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getContext() , ""+response , Toast.LENGTH_SHORT).show();
                     JSONObject jsonObject = new JSONObject(response);
                     Boolean error = jsonObject.getBoolean("error");
                     if (error) {
@@ -112,8 +117,16 @@ public class BookingFragment extends Fragment implements BookingItemListener {
 //                                String room = single.getString("room_number");
 //                                String roomId = single.getString("room_id");
                                 String propertyId = single.getString("booking_property");
+                                int isCheck = single.getInt("booking_is_checked");
+                                boolean status = false;
+                                if (isCheck == 1) {
+                                    status = true;
+                                } else {
+
+                                    status = false;
+                                }
                                 //String propertyCoverImage = single.getString("property_cover_image");
-                                Booking booking = new Booking(id, number, date, startDate, endDate, amount,  propertyId);
+                                Booking booking = new Booking(id, number, date, startDate, endDate, amount, propertyId, status);
                                 list.add(booking);
                             }
                             setAdapter(list);
@@ -181,16 +194,81 @@ public class BookingFragment extends Fragment implements BookingItemListener {
     }
 
     @Override
-    public void onPaymentViewClick(Booking booking) {
+    public void onCheckInClick(final Booking booking) {
 
-        Log.d(TAG, "onPaymentViewClick: " + booking.getNumber());
-        Intent pendingPaymentService = new Intent(getContext(), PaymentHistoryForBooking.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("bookingId", booking.getId());
-        bundle.putString("bookingNumber", booking.getNumber());
-        pendingPaymentService.putExtras(bundle);
-        startActivity(pendingPaymentService);
+        sheetDialog = new BottomSheetDialog(getContext(), R.style.BottomSheetDialogTheme);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.otp_verify_chekin, null, false);
+        sheetDialog.setContentView(view);
+        Button verify;
+        final EditText otp;
+        otp = view.findViewById(R.id.otp_enter);
+        verify = view.findViewById(R.id.checkIn);
+
+
+        verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = null;
+                str = otp.getText().toString();
+                if (TextUtils.isEmpty(str)) {
+                    Toast.makeText(getContext(), "Please enter OTP", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                verify(str, booking.getId());
+            }
+        });
+        sheetDialog.show();
     }
+
+    private void verify(final String str, final String id) {
+        showProgress.show("Please wait for verification ...");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.VERIFY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                showProgress.dismiss();
+                Log.d(TAG, "onResponse: " + response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean error = jsonObject.getBoolean("error");
+                    String msg = jsonObject.getString("msg");
+                    if (error) {
+                        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                    } else {
+                        sheetDialog.dismiss();
+//                        fetchActiveBooking(user.getUid());
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return super.getHeaders();
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hash = new HashMap<>();
+                hash.put("booking", id);
+                hash.put("otp", str);
+
+                return hash;
+            }
+        };
+
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(stringRequest);
+
+    }
+
 
     @Override
     public void onResume() {
